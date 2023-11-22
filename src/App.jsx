@@ -1,23 +1,27 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { VITE_API_URL } from "./config/config";
-const App = () => {
-  const [users, setUsers] = useState([]);
-  const requesUsers = async () => await axios.get(`${VITE_API_URL}/api/users`);
+import { Routes, Route } from "react-router-dom";
+import Login from "./public/pages/Login";
+import Home from "./auth/pages/Home";
+import ProtectedRoutes from "./auth/components/ProtectedRoutes";
+import { useContextProvider } from "./context/ContextProvider";
+import CreateUsers from "./auth/pages/CreateUsers";
+import SideBar from "./auth/components/SideBar";
 
-  useEffect(() => {
-    (async () => {
-      const { data } = await requesUsers();
-      setUsers(data);
-    })();
-  }, []);
+const App = () => {
+  const { authenticated } = useContextProvider();
+  const isAuth = authenticated && authenticated.name;
   return (
-    <div className="font-bold text-2xl flex w-full justify-center h-screen items-center flex-col">
-      {users.map((user) => (
-        <div key={user._id} className="flex flex-col">
-          <p>{user.name}</p>
-        </div>
-      ))}
+    <div className="w-full flex">
+      {isAuth && <SideBar />}
+      <div className={`${isAuth ? "w-5/6" : "w-full"}`}>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/create-users" element={<CreateUsers />} />
+          </Route>
+        </Routes>
+      </div>
     </div>
   );
 };
