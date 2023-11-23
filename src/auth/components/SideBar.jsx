@@ -10,45 +10,64 @@ const SideBar = () => {
     navigate("/login");
   };
   return (
-    <div className="bg-blue-800 w-1/6 h-screen">
-      <div className="w-full">
-        <h1 className="font-bold text-6xl">SIDEBAR</h1>
-        <nav>
-          {authenticated?.rol === ROLES.SUPER_ADMIN && (
-            <ul>
-              <li>
-                <Link to="/create-users">Crear usuarios</Link>
-              </li>
-              <li>
-                <Link to="/home">HOME</Link>
-              </li>
-              <li>SUPER ADMIN</li>
-              <li>SUPER ADMIN</li>
-              <li>SUPER ADMIN</li>
-            </ul>
-          )}
-          {authenticated?.rol === ROLES.ADMIN && (
-            <ul>
-              <li>ADMIN</li>
-              <li>ADMIN</li>
-              <li>ADMIN</li>
-              <li>ARMIN</li>
-            </ul>
-          )}
-          {authenticated?.rol === ROLES.USER && (
-            <ul>
-              <li>USER</li>
-              <li>USER</li>
-              <li>USER</li>
-              <li>USER</li>
-            </ul>
-          )}
-          <button onClick={handdlelogout} className="bg-red-500">
-            Cerrar sesion
-          </button>
-        </nav>
+    <nav>
+      <div className="sidebar">
+        <div className="logo">
+          <img src="/src/assets/default.png" alt="Logo de swiftAdmin" />
+          <span>SwiftAdmin</span>
+        </div>
+
+        {authenticated?.rol === ROLES.SUPER_ADMIN && (
+          <div className="menu-list">
+            <h2 className="rol">SuperAdmin</h2>
+            <a>
+              <Link to="/create-users">
+                <i className="fa-solid fa-user-plus" />
+                Crear usuarios
+              </Link>
+            </a>
+            <a>
+              <Link to="/home">
+                <i className="fa-solid fa-house" />
+                HOME
+              </Link>
+            </a>
+            <a>
+              <Link to="/">
+                <i className="fa-solid fa-layer-group" />
+                Facultades
+              </Link>
+            </a>
+            <a>
+              <Link to="/">
+                <i className="fa-solid fa-layer-group" />
+                Facultades
+              </Link>
+            </a>
+          </div>
+        )}
+        {authenticated?.rol === ROLES.ADMIN && (
+          <ul>
+            <li>ADMIN</li>
+            <li>ADMIN</li>
+            <li>ADMIN</li>
+            <li>ARMIN</li>
+          </ul>
+        )}
+        {authenticated?.rol === ROLES.USER && (
+          <ul>
+            <li>USER</li>
+            <li>USER</li>
+            <li>USER</li>
+            <li>USER</li>
+          </ul>
+        )}
+        <a onClick={handdlelogout}>
+          <i className="fa-solid fa-right-from-bracket" />
+          Salir
+        </a>
       </div>
-    </div>
+    </nav>
   );
 };
 

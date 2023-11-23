@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContextProvider } from "../../context/ContextProvider";
 const Login = () => {
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const navigate = useNavigate();
   const { userLogin, authenticated } = useContextProvider();
   const login = async (data) => {
@@ -16,37 +17,79 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   return (
-    <div className="w-full h-screen flex justify-center items-center">
-      <div className="w-96 h-96 bg-red-500 rounded-lg shadow-lg flex flex-col justify-center items-center">
-        <h1 className="text-3xl font-bold pb-3">Inicia sesion</h1>
-        <form onSubmit={handleSubmit(login)}>
-          <div className="flex flex-col">
-            <input
-              className="bg-blue-100 h-10 p-3 m-3 rounded-lg text-xl"
-              type="email"
-              placeholder="Ingresa eol correo"
-              {...register("email", { required: true })}
-            />
-            {errors.email && <p className="pl-3">el correo es requerido.</p>}
-            <input
-              className="bg-blue-100 h-10 p-3 m-3 rounded-lg text-xl"
-              type="password"
-              placeholder="Ingresa tru contrasena"
-              {...register("password", { required: true })}
-            />
-            {errors.password && (
-              <p className="pl-3">La contrasena es requerida.</p>
+    <div className="login-background">
+      <div className="rect1"></div>
+      <div className="rect2"></div>
+      <div className="login-primary">
+        <div className="login-image">
+          <img src="/src/assets/login-image.jpg" alt="" draggable="false" />
+        </div>
+        <div className="login-container">
+          <div className="login-content">
+            <h1 className="tittle">Inicia Sesión</h1>
+            <div className="line"></div>
+            <p>Bienvenido a SwiftAdmin!</p>
+            <form onSubmit={handleSubmit(login)}>
+              <div className="login-inputs">
+                <div className="input-card">
+                  <i id="icon-input" className="fa-solid fa-envelope" />
+                  <input
+                    className="input"
+                    type="email"
+                    placeholder="Correo electronico"
+                    {...register("email", { required: true })}
+                  />
+                </div>
+                <div className="input-card">
+                  <i id="icon-input" className="fa-solid fa-lock" />
+                  <input
+                    className="input"
+                    type={isVisiblePassword ? "text" : "password"}
+                    placeholder="Contraseña"
+                    {...register("password", { required: true })}
+                  />
+                  {isVisiblePassword ? (
+                    <i
+                      onClick={() => {
+                        setIsVisiblePassword(!isVisiblePassword);
+                      }}
+                      className="fa-regular fa-eye-slash"
+                      id="password-toggle"
+                    />
+                  ) : (
+                    <i
+                      onClick={() => {
+                        setIsVisiblePassword(!isVisiblePassword);
+                      }}
+                      className="fa-regular fa-eye"
+                      id="password-toggle"
+                    />
+                  )}
+                </div>
+
+                {errors.email && (
+                  <p className="alert1">El correo es requerido.</p>
+                )}
+                {errors.password && (
+                  <p className="alert2">La contraseña es requerida.</p>
+                )}
+              </div>
+              <div className="button-div">
+                <button className="btn">Ingresar</button>
+              </div>
+            </form>
+            {authenticated?.message && (
+              <p className="alert3">{authenticated.message}</p>
             )}
+            <p className="about">
+              &copy; 2023 Todos los derechos reservados. Todas las imágenes y
+              contenidos utilizados en este sitio son propiedad de sus
+              respectivos dueños. <br />
+              Desarrollada con pasión y dedicación por Gabriel Oquendo. <br />
+              Política de Privacidad. Términos y Condiciones.
+            </p>
           </div>
-          <div className="w-full  flex justify-center mt-7">
-            <button className="py-4 bg-green-700 px-7 rounded-lg hover:bg-blue-500 font-bold">
-              Iniciar sesion
-            </button>
-          </div>
-        </form>
-        {authenticated?.message && (
-          <p className="text-3xl font-bold pt-3">{authenticated.message}</p>
-        )}
+        </div>
       </div>
     </div>
   );

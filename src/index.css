@@ -5,8 +5,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap");
 
 :root {
-  --color-primary: #3366cc;
-  --color-secondary: #e84e1b;
+  --color-primary: #1058c5;
+  --color-secondary: #e8881b;
   --color-accent: #9dbc1c;
   --color-text: #181818;
   --color-back: #ffff;
@@ -18,7 +18,241 @@
   box-sizing: border-box;
 }
 
-html {
+body {
   font-family: "Poppins", sans-serif;
-  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  font-size: 100%;
+}
+
+.login-background {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rect1 {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  width: 48rem;
+  height: 8rem;
+  background-color: var(--color-secondary);
+}
+.rect2 {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 30rem;
+  height: 15rem;
+  background-color: var(--color-primary);
+}
+.login-primary {
+  width: 85%;
+  height: 85%;
+  display: flex;
+  background-color: white;
+  box-shadow: 0 0 0.5rem #1818183a;
+}
+.login-image {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  width: 60%;
+}
+.login-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  background: linear-gradient(to top right, #e8881b, #1058c5);
+  z-index: 1;
+  pointer-events: none;
+}
+.login-image img {
+  height: 100%;
+  object-fit: cover;
+}
+.login-container {
+  position: relative;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-content {
+  position: relative;
+  width: 70%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.tittle {
+  text-align: left;
+  font-size: 2em;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.line {
+  width: 10rem;
+  height: 0.15rem;
+  margin-bottom: 1rem;
+  background-color: var(--color-primary);
+}
+.login-content p {
+  margin-bottom: 1rem;
+}
+.login-content form {
+  width: 100%;
+}
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+.input-card {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+#icon-input {
+  position: absolute;
+  left: 0.8rem;
+  font-size: 1.2em;
+  color: var(--color-text);
+}
+
+.input {
+  width: 100%;
+  height: 2.5rem;
+  border-bottom: 0.1rem solid var(--color-primary);
+  /* border: 0.12rem solid var(--color-text); */
+  /* border-radius: 0.8rem; */
+  background-color: white;
+  padding-left: 2.5rem;
+}
+.input:focus {
+  animation: deploid 0.4s forwards;
+  outline: none;
+}
+@keyframes deploid {
+  0% {
+    border-bottom: transparent;
+  }
+  100% {
+    border-bottom: 0.15rem solid var(--color-primary);
+  }
+}
+
+#password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #9ca3af;
+}
+.button-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+.btn {
+  position: relative;
+  background: none;
+  padding: 0.5rem 0;
+  width: 100%;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  transition: 0.5s;
+  overflow: hidden;
+  z-index: 2;
+  border: 0.2rem solid var(--color-primary);
+  /* border-radius: 0.8rem; */
+  letter-spacing: 0.1rem;
+  outline: none;
+}
+.btn:hover {
+  color: var(--color-primary);
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+  width: 110%;
+  height: 200%;
+  background: var(--color-primary);
+  z-index: -1;
+  transition: 0.5s;
+}
+.btn:hover::before {
+  height: 0%;
+}
+.alert1,
+.alert2 {
+  position: absolute;
+  font-size: 0.8em;
+}
+.alert1 {
+  bottom: 5rem;
+}
+.alert2 {
+  bottom: 3.8rem;
+}
+.about {
+  position: absolute;
+  font-size: 0.55em;
+  text-align: center;
+  bottom: -4rem;
+}
+
+/*-------HOME------*/
+nav {
+  width: 1/6;
+  height: 100vh;
+  background: var(--color-primary);
+}
+.sidebar {
+  position: relative;
+  padding: 1rem;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background: white;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+}
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.logo span {
+  font-size: 1.1em;
+  color: var(--color-text);
+  font-weight: bold;
+  padding-left: 15px;
+  text-transform: uppercase;
 }
