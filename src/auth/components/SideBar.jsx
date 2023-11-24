@@ -12,38 +12,50 @@ const SideBar = () => {
   return (
     <nav>
       <div className="sidebar">
-        <div className="logo">
-          <img src="/src/assets/default.png" alt="Logo de swiftAdmin" />
-          <span>SwiftAdmin</span>
-        </div>
+        <li className="li-logo">
+          <Link to="/home" className="btn-sidebar-home">
+            <span className="text-logo">SwiftAdmin</span>
+          </Link>
+        </li>
 
         {authenticated?.rol === ROLES.SUPER_ADMIN && (
           <div className="menu-list">
-            <h2 className="rol">SuperAdmin</h2>
-            <a>
-              <Link to="/create-users">
-                <i className="fa-solid fa-user-plus" />
-                Crear usuarios
+            <div className="what-rol">
+              <span className="rol-label">Rol asignado</span>
+              <span className="rol">SuperAdmin</span>
+            </div>
+            <li>
+              <Link to="/create-users" className="btn-sidebar-home">
+                <span className="icon">
+                  <i className="fa-solid fa-user-plus" />
+                </span>
+                <span className="text">Crear usuarios</span>
               </Link>
-            </a>
-            <a>
-              <Link to="/home">
-                <i className="fa-solid fa-house" />
-                HOME
+            </li>
+            <li>
+              <Link to="/home" className="btn-sidebar-home">
+                <span className="icon">
+                  <i className="fa-solid fa-house" />
+                </span>
+                <span className="text">Inicio</span>
               </Link>
-            </a>
-            <a>
-              <Link to="/">
-                <i className="fa-solid fa-layer-group" />
-                Facultades
+            </li>
+            <li>
+              <Link to="/home" className="btn-sidebar-home">
+                <span className="icon">
+                  <i className="fa-solid fa-layer-group" />
+                </span>
+                <span className="text">Facultades</span>
               </Link>
-            </a>
-            <a>
-              <Link to="/">
-                <i className="fa-solid fa-layer-group" />
-                Facultades
+            </li>
+            <li>
+              <Link to="/home" className="btn-sidebar-home">
+                <span className="icon">
+                  <i className="fa-solid fa-layer-group" />
+                </span>
+                <span className="text">Facultades</span>
               </Link>
-            </a>
+            </li>
           </div>
         )}
         {authenticated?.rol === ROLES.ADMIN && (
@@ -62,10 +74,16 @@ const SideBar = () => {
             <li>USER</li>
           </ul>
         )}
-        <a onClick={handdlelogout}>
-          <i className="fa-solid fa-right-from-bracket" />
-          Salir
-        </a>
+        <div className="menu-list">
+          <li>
+            <Link onClick={handdlelogout} className="btn-sidebar-home">
+              <span className="icon">
+                <i className="fa-solid fa-right-from-bracket" />
+              </span>
+              <span className="text">Cerrar Sesión</span>
+            </Link>
+          </li>
+        </div>
       </div>
     </nav>
   );

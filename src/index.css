@@ -8,7 +8,7 @@
   --color-primary: #1058c5;
   --color-secondary: #e8881b;
   --color-accent: #9dbc1c;
-  --color-text: #181818;
+  --color-text: #2b2b2b;
   --color-back: #ffff;
 }
 
@@ -224,35 +224,93 @@ body {
   bottom: -4rem;
 }
 
-/*-------HOME------*/
+/*---------------------HOME-------------------*/
 nav {
-  width: 1/6;
+  position: absolute;
+  z-index: 10;
+  width: 15.6rem;
   height: 100vh;
   background: var(--color-primary);
+  overflow: hidden;
 }
 .sidebar {
   position: relative;
-  padding: 1rem;
+  overflow: hidden;
 }
-.logo {
+.li-logo {
+  height: 5rem;
   display: flex;
   align-items: center;
-  padding: 0.5rem;
-  background: white;
-  border-radius: 0.625rem;
+  justify-content: center;
   overflow: hidden;
-  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
-}
-.logo img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
+  margin-bottom: 1rem;
+  background: var(--color-secondary);
 }
 
-.logo span {
-  font-size: 1.1em;
-  color: var(--color-text);
-  font-weight: bold;
-  padding-left: 15px;
+.text-logo {
+  padding-left: 0.5rem;
+}
+.logo img {
+  border-radius: 50%;
+}
+.what-rol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-text);
+  margin-bottom: 1rem;
+}
+.rol-label {
+  font-size: 0.8em;
+  color: var(--color-back);
+}
+.rol {
+  font-size: 1.6em;
+  color: var(--color-back);
+  font-weight: 600;
+  margin-top: -0.4rem;
+}
+.sidebar li {
+  list-style: none;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.sidebar li .btn-sidebar-home {
+  position: relative;
+  display: flex;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.sidebar li .btn-sidebar-home .icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 3rem;
+  height: 100%;
+  font-size: 1.5em;
+  color: var(--color-back);
+}
+.sidebar li .btn-sidebar-home .text,
+.sidebar li .btn-sidebar-home .text-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 00;
+  color: var(--color-back);
   text-transform: uppercase;
+}
+.sidebar li .btn-sidebar-home .text-logo {
+  font-weight: 600;
+  font-size: 1.2em;
+  letter-spacing: 0.2rem;
+}
+.Sidebar li .btn-sidebar-home .text-logo {
+  font-weight: 600;
+  letter-spacing: 0.5rem;
+  font-size: 1.5rem;
 }
