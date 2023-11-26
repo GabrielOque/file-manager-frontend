@@ -13,7 +13,7 @@ const SideBar = () => {
     <nav>
       <div className="sidebar">
         <li className="li-logo">
-          <Link to="/home" className="btn-sidebar-home">
+          <Link to="/home" className="btn-sidebar-home-logo">
             <span className="text-logo">SwiftAdmin</span>
           </Link>
         </li>

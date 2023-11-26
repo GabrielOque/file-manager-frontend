@@ -16,26 +16,37 @@ const HomeSuperAdmin = () => {
     setSearch(e.target.value);
   };
   return (
-    <div className="overflow-y-auto h-screen">
-      <p className="text-center font-bold">
-        LISTA DE FACULTADES PARA SUPER ADMINISTRADORES
-      </p>
-      <div className="text-center ">
-        <input
-          onChange={handdleSearch}
-          placeholder="Buscar Usuario por correo"
-          className="p-3 bg-blue-300 w-72"
-        />
+    <div className="home">
+      <div className="top-info-home">
+        <div className="tittle-with-icon">
+          <i className="fa-solid fa-layer-group" />
+          <h1 className="tittle-home">FACULTADES</h1>
+        </div>
+        <div className="search-home">
+          <i className="fa-solid fa-magnifying-glass" />
+          <input
+            onChange={handdleSearch}
+            placeholder="Buscar Facultad"
+            className="search-input"
+          />
+        </div>
       </div>
-      <div className="w-full flex flex-wrap justify-between">
+      <div className="line-home"></div>
+      <div className="container-cards">
         {faculties
           .filter((item) =>
             item?.name.toLowerCase().includes(search.toLowerCase())
           )
           .map((item) => (
-            <div key={item._id} className="bg-red-500 w-1/4 p-3 m-3">
-              <h1 className="text-xl font-bold">{item._id}</h1>
-              <h1 className="text-xl font-bold">{item.name}</h1>
+            <div key={item._id} className="facult-cards">
+              <div className="box">
+                <div className="content">
+                  <h2>IUE</h2>
+                  <h3 className="text-name-facult-cards">{item.name}</h3>
+                  <p className="text-id-facult-cards">{item._id}</p>
+                </div>
+              </div>
+              <h2 className="interact">Visitar</h2>
             </div>
           ))}
       </div>
