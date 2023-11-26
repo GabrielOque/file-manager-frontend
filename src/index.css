@@ -434,6 +434,19 @@ nav {
   text-transform: uppercase;
   text-align: center;
   font-weight: 600;
+  pointer-events: none;
+}
+.container-cards .facult-cards i {
+  position: absolute;
+  width: 100%;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1.5em;
+  color: #9ca3af;
+  text-transform: uppercase;
+  text-align: end;
+  font-weight: 600;
+  cursor: pointer;
 }
 .container-cards .facult-cards .box {
   position: absolute;

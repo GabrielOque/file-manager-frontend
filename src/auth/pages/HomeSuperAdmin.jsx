@@ -46,6 +46,7 @@ const HomeSuperAdmin = () => {
                   <p className="text-id-facult-cards">{item._id}</p>
                 </div>
               </div>
+              <i className="fa-solid fa-ellipsis-vertical" />
               <h2 className="interact">Visitar</h2>
             </div>
           ))}
