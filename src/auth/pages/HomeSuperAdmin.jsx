@@ -1,4 +1,4 @@
-import React from "react";
+import FacultiesCard from "../components/FacultiesCard";
 import { useEffect, useState } from "react";
 import { useContextProvider } from "../../context/ContextProvider";
 
@@ -38,17 +38,7 @@ const HomeSuperAdmin = () => {
             item?.name.toLowerCase().includes(search.toLowerCase())
           )
           .map((item) => (
-            <div key={item._id} className="facult-cards">
-              <div className="box">
-                <div className="content">
-                  <h2>IUE</h2>
-                  <h3 className="text-name-facult-cards">{item.name}</h3>
-                  <p className="text-id-facult-cards">{item._id}</p>
-                </div>
-              </div>
-              <i className="fa-solid fa-ellipsis-vertical" />
-              <h2 className="interact">Visitar</h2>
-            </div>
+            <FacultiesCard key={item._id} item={item} />
           ))}
       </div>
     </div>
