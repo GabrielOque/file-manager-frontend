@@ -341,7 +341,7 @@ nav {
 }
 .home {
   overflow-x: hidden;
-  min-height: 100vh;
+  height: 100vh;
   background: #ebf5fc;
   padding: 1.5rem;
   display: flex;
@@ -395,7 +395,7 @@ nav {
 }
 .line-home {
   width: 80%;
-  height: 0.12rem;
+  min-height: 0.12rem;
   margin-bottom: 2rem;
   background-color: var(--color-text);
 }
@@ -508,5 +508,46 @@ nav {
   text-align: center;
 }
 .container-cards .facult-cards:hover .box .content .text-id-facult-cards {
+  color: var(--color-back);
+}
+.table {
+  width: 80%;
+  display: flex;
+  /* border: 0.2rem solid var(--color-text);
+  border-radius: 1rem; */
+  justify-content: space-between;
+  /* box-shadow: 0 0.2rem 0.6rem var(--color-text); */
+}
+.row-list img {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.2rem;
+  border-radius: 50%;
+  vertical-align: middle;
+  object-fit: cover;
+}
+th {
+  padding: 1rem 3.5rem;
+}
+td {
+  padding: 0.5rem;
+  text-align: center;
+}
+.table-body {
+  width: 100%;
+  max-height: 89%;
+  /* background: #fffb; */
+  /* margin: 0.8rem auto; */
+  /* border-radius: 1rem; */
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+thead {
+  background: var(--color-text);
+  color: var(--color-back);
+}
+tbody:hover {
+  background: var(--color-primary);
   color: var(--color-back);
 }

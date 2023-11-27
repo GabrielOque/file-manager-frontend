@@ -21,40 +21,68 @@ const HomeAdmin = () => {
   };
 
   return (
-    <div className="overflow-y-auto h-screen">
-      <p className="text-center font-bold">
-        LISTA DE USUARIOS PARA ADMINISTRADOR
-      </p>
-      <div className="text-center ">
-        <input
-          onChange={handdleSearch}
-          placeholder="Buscar Usuario por correo"
-          className="p-3 bg-blue-300 w-72"
-        />
+    <div className="home">
+      <div className="top-info-home">
+        <div className="tittle-with-icon">
+          <i className="fa-solid fa-layer-group" />
+          <h1 className="tittle-home">PROFESORES</h1>
+        </div>
+        <div className="search-home">
+          <i className="fa-solid fa-magnifying-glass" />
+          <input
+            onChange={handdleSearch}
+            placeholder="Buscar por correo"
+            className="search-input"
+          />
+        </div>
       </div>
-      <div className="w-full flex flex-wrap justify-between">
-        {userFaculties
-          .filter((item) =>
-            item?.email.toLowerCase().includes(search.toLowerCase())
-          )
-          .map(
-            (user) =>
-              user._id !== authenticated._id && (
-                <div key={user._id} className="bg-red-500 w-1/4 p-3 m-3">
-                  {user.name ? (
-                    <h1 className="text-xl font-bold">{getFullName(user)}</h1>
-                  ) : (
-                    <h1 className="text-xl font-bold">Sin verificar</h1>
-                  )}
-                  <h1 className="text-xl font-bold">{user.email}</h1>
-                  {user.avatar.public_id ? (
-                    <img src={user.avatar.url} />
-                  ) : (
-                    <img src={defaultImage} />
-                  )}
-                </div>
+      <div className="line-home"></div>
+      <div className="table">
+        <section className="table-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre y Apellido</th>
+                <th>Correo</th>
+                <th>Rol</th>
+              </tr>
+            </thead>
+
+            {userFaculties
+              .filter((item) =>
+                item?.email.toLowerCase().includes(search.toLowerCase())
               )
-          )}
+              .map(
+                (user) =>
+                  user._id !== authenticated._id && (
+                    <tbody>
+                      <td className="row-list">
+                        {user.avatar.public_id ? (
+                          <img src={user.avatar.url} />
+                        ) : (
+                          <img src={defaultImage} />
+                        )}
+                      </td>
+                      <td className="row-list">
+                        {user.name ? (
+                          <p>{getFullName(user)}</p>
+                        ) : (
+                          <p>Sin verificar</p>
+                        )}
+                      </td>
+                      <td className="row-list">
+                        {" "}
+                        <p>{user.email}</p>
+                      </td>
+                      <td className="row-list">
+                        <p>{user.rol}</p>
+                      </td>
+                    </tbody>
+                  )
+              )}
+          </table>
+        </section>
       </div>
     </div>
   );
