@@ -31,6 +31,14 @@ const HomeUser = () => {
             <div key={file._id} className="bg-red-500 w-1/4 p-3 m-3">
               <h1 className="text-xl font-bold">{file.name}</h1>
               <h1 className="text-xl font-bold">{file.description}</h1>
+              {file.isApproved ? (
+                <div className="text-xl font-bold">
+                  <p>Icono</p>
+                  <p>{file.approver}</p>
+                </div>
+              ) : (
+                <h1 className="text-xl font-bold">Relojito</h1>
+              )}
               <a
                 href={file.file.url}
                 className="text-xl font-bold truncate "

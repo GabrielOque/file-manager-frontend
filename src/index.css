@@ -223,16 +223,13 @@ body {
 
 /*---------------------HOME-------------------*/
 nav {
-  position: relative;
   z-index: 10;
-  width: 15.6rem;
   height: 100vh;
   background: var(--color-text);
   overflow: hidden;
   box-shadow: 0 0 0.5rem #181818d0;
 }
 .sidebar {
-  position: relative;
   overflow: hidden;
 }
 .li-logo {

@@ -10,7 +10,7 @@ const SideBar = () => {
     navigate("/login");
   };
   return (
-    <nav>
+    <nav className="w-1/6">
       <div className="sidebar">
         <li className="li-logo">
           <Link to="/home" className="btn-sidebar-home-logo">

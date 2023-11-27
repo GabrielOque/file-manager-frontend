@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import defaultImage from "../../assets/default.png";
 import { useContextProvider } from "../../context/ContextProvider";
 const HomeAdmin = () => {
   const { authenticated, getUsersFaculties, userFaculties } =
@@ -14,6 +15,11 @@ const HomeAdmin = () => {
   const handdleSearch = (e) => {
     setSearch(e.target.value);
   };
+
+  const getFullName = (user) => {
+    return `${user.name} ${user.lastName}`;
+  };
+
   return (
     <div className="overflow-y-auto h-screen">
       <p className="text-center font-bold">
@@ -35,9 +41,17 @@ const HomeAdmin = () => {
             (user) =>
               user._id !== authenticated._id && (
                 <div key={user._id} className="bg-red-500 w-1/4 p-3 m-3">
-                  <h1 className="text-xl font-bold">{user.name}</h1>
-                  <h1 className="text-xl font-bold">{user.lastName}</h1>
+                  {user.name ? (
+                    <h1 className="text-xl font-bold">{getFullName(user)}</h1>
+                  ) : (
+                    <h1 className="text-xl font-bold">Sin verificar</h1>
+                  )}
                   <h1 className="text-xl font-bold">{user.email}</h1>
+                  {user.avatar.public_id ? (
+                    <img src={user.avatar.url} />
+                  ) : (
+                    <img src={defaultImage} />
+                  )}
                 </div>
               )
           )}
