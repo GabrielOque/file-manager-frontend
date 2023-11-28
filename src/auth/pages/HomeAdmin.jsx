@@ -35,30 +35,17 @@ const HomeAdmin = () => {
         </div>
       </div>
       <div className="line-home"></div>
-      <div className="table">
-        <section className="table-body">
-          <table>
-            <thead>
-              <tr>
-                <th>Imagen</th>
-                <th>Nombre y Apellido</th>
-                <th>Correo</th>
-                <th>Rol</th>
-              </tr>
-            </thead>
-
-            {userFaculties
-              .filter((item) =>
-                item?.email.toLowerCase().includes(search.toLowerCase())
+      <div className="container-users">
+        {userFaculties
+          .filter((item) =>
+            item?.email.toLowerCase().includes(search.toLowerCase())
+          )
+          .map(
+            (user, index) =>
+              user._id !== authenticated._id && (
+                <UserCard key={user._id} user={user} index={index} />
               )
-              .map(
-                (user) =>
-                  user._id !== authenticated._id && (
-                    <UserCard key={user._id} user={user} />
-                  )
-              )}
-          </table>
-        </section>
+          )}
       </div>
     </div>
   );

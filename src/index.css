@@ -510,44 +510,51 @@ nav {
 .container-cards .facult-cards:hover .box .content .text-id-facult-cards {
   color: var(--color-back);
 }
-.table {
+.container-users {
   width: 80%;
   display: flex;
-  /* border: 0.2rem solid var(--color-text);
-  border-radius: 1rem; */
-  justify-content: space-between;
-  /* box-shadow: 0 0.2rem 0.6rem var(--color-text); */
-}
-.row-list img {
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-right: 0.2rem;
-  border-radius: 50%;
-  vertical-align: middle;
-  object-fit: cover;
-}
-th {
-  padding: 1rem 3.5rem;
-}
-td {
-  padding: 0.5rem;
-  text-align: center;
-}
-.table-body {
-  width: 100%;
-  max-height: 89%;
-  /* background: #fffb; */
-  /* margin: 0.8rem auto; */
-  /* border-radius: 1rem; */
-  display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.card-user {
+  position: relative;
+  width: 100%;
+  height: 4rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 1rem;
   cursor: pointer;
+  margin: 0.2rem;
+  background: white;
 }
-thead {
-  background: var(--color-text);
+.card-user:hover {
   color: var(--color-back);
-}
-tbody:hover {
   background: var(--color-primary);
-  color: var(--color-back);
+  margin-left: -2rem;
+  margin-right: 2rem;
+  /* transition: 0.3s all; */
 }
+.card-user:hover img {
+  width: 3.8rem;
+  height: 3.8rem;
+  margin-bottom: 1rem;
+  border-radius: 0.2rem;
+  box-shadow: 0px 4px 8px #2b2b2b79;
+}
+.card-user img {
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: 0.5s all;
+}
+/* .odd-row {
+  background-color: #f0f0f0;
+}
+.even-row {
+  background-color: #ffffff;
+} */
