@@ -30,3 +30,6 @@ export const requestFiles = async (idAuthor) =>
 
 export const requestLogout = async () =>
   await axios.post(`${VITE_API_URL}/api/users/logout`, CREDENTIALS);
+
+export const requestToken = async () =>
+  await axios.post(`${VITE_API_URL}/api/users/token`, CREDENTIALS);

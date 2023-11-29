@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useContextProvider } from "../../context/ContextProvider";
 const Login = () => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const navigate = useNavigate();
-  const { userLogin, authenticated } = useContextProvider();
+  const { userLogin, authenticated, verifyToken, setAuthenticated } =
+    useContextProvider();
   const login = async (data) => {
     await userLogin(data);
     navigate("/home");
@@ -16,6 +17,16 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    (async () => {
+      const token = await verifyToken();
+      if (token._id) {
+        setAuthenticated(token);
+        navigate("/home");
+      }
+    })();
+  }, []);
   return (
     <div className="login-background">
       <div className="rect1"></div>

@@ -6,6 +6,7 @@ import {
   requestFaculties,
   requestFiles,
   requestLogout,
+  requestToken,
 } from "../api/usersRequest";
 const context = createContext();
 
@@ -51,6 +52,11 @@ export const ContextProvider = ({ children }) => {
     setAuthenticated("");
   };
 
+  const verifyToken = async () => {
+    const response = await requestToken();
+    return response.data;
+  };
+
   return (
     <context.Provider
       value={{
@@ -65,6 +71,7 @@ export const ContextProvider = ({ children }) => {
         files,
         getFiles,
         logout,
+        verifyToken,
       }}
     >
       {children}

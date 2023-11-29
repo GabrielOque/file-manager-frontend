@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContextProvider } from "../../context/ContextProvider";
+import LinkSideBar from "./LinkSideBar";
 import { ROLES } from "../../config/config";
 
 const SideBar = () => {
@@ -24,55 +25,56 @@ const SideBar = () => {
               <span className="rol-label">Rol asignado</span>
               <span className="rol">SuperAdmin</span>
             </div>
-            <li>
-              <Link to="/create-users" className="btn-sidebar-home">
-                <span className="icon">
-                  <i className="fa-solid fa-user-plus" />
-                </span>
-                <span className="text">Crear usuarios</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/home" className="btn-sidebar-home">
-                <span className="icon">
-                  <i className="fa-solid fa-house" />
-                </span>
-                <span className="text">Inicio</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/home" className="btn-sidebar-home">
-                <span className="icon">
-                  <i className="fa-solid fa-layer-group" />
-                </span>
-                <span className="text">Facultades</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/home" className="btn-sidebar-home">
-                <span className="icon">
-                  <i className="fa-solid fa-layer-group" />
-                </span>
-                <span className="text">Facultades</span>
-              </Link>
-            </li>
+            <LinkSideBar route="/home" iconName="fa-house" title="Home" />
+            <LinkSideBar
+              route="/create-users"
+              iconName="fa-user-plus"
+              title="Crear usuarios"
+            />
+            <LinkSideBar
+              route="/home"
+              iconName="fa-layer-group"
+              title="Crear facultades"
+            />
           </div>
         )}
         {authenticated?.rol === ROLES.ADMIN && (
-          <ul>
-            <li>ADMIN</li>
-            <li>ADMIN</li>
-            <li>ADMIN</li>
-            <li>ARMIN</li>
-          </ul>
+          <div className="menu-list">
+            <div className="what-rol">
+              <span className="rol-label">Rol asignado</span>
+              <span className="rol">SuperAdmin</span>
+            </div>
+            <LinkSideBar route="/home" iconName="fa-house" title="Home" />
+            <LinkSideBar
+              route="/create-users"
+              iconName="fa-user-plus"
+              title="Crear usuarios"
+            />
+            <LinkSideBar
+              route="/home"
+              iconName="fa-layer-group"
+              title="Crear facultades"
+            />
+          </div>
         )}
         {authenticated?.rol === ROLES.USER && (
-          <ul>
-            <li>USER</li>
-            <li>USER</li>
-            <li>USER</li>
-            <li>USER</li>
-          </ul>
+          <div className="menu-list">
+            <div className="what-rol">
+              <span className="rol-label">Rol asignado</span>
+              <span className="rol">SuperAdmin</span>
+            </div>
+            <LinkSideBar route="/home" iconName="fa-house" title="Home" />
+            <LinkSideBar
+              route="/create-users"
+              iconName="fa-user-plus"
+              title="Crear usuarios"
+            />
+            <LinkSideBar
+              route="/home"
+              iconName="fa-layer-group"
+              title="Crear facultades"
+            />
+          </div>
         )}
         <div className="menu-list">
           <li>

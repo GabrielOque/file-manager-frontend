@@ -1,3 +1,6 @@
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 export const VITE_API_URL = import.meta.env.VITE_API_URL;
 export const ROLES = {
   ADMIN: "Admin",
@@ -16,4 +19,5 @@ export const MESSAGE = {
   INFO: "info",
   DEFAULT: "default",
   LOADING: "loading",
+  INVALID_TOKEN: "No hay token",
 };
