@@ -13,40 +13,50 @@ const HomeUser = () => {
     setSearch(e.target.value);
   };
   return (
-    <div className="overflow-y-auto h-screen">
-      <p className="text-center font-bold">LISTA DE ARCHIVOS</p>
-      <div className="text-center ">
-        <input
-          onChange={handdleSearch}
-          placeholder="Buscar Usuario por correo"
-          className="p-3 bg-blue-300 w-72"
-        />
+    <div className="home">
+      <div className="top-info-home">
+        <div className="tittle-with-icon">
+          <i className="fa-solid fa-user" />
+          <h1 className="tittle-home">{authenticated.name}</h1>
+        </div>
+        <div className="search-home">
+          <i className="fa-solid fa-magnifying-glass" />
+          <input
+            onChange={handdleSearch}
+            placeholder="Buscar por correo"
+            className="search-input"
+          />
+        </div>
       </div>
-      <div className="w-full flex flex-wrap justify-between">
+      <div className="line-home"></div>
+      <div className="container-files">
         {files
           .filter((file) =>
             file?.name.toLowerCase().includes(search.toLowerCase())
           )
           .map((file) => (
-            <div key={file._id} className="bg-red-500 w-1/4 p-3 m-3">
-              <h1 className="text-xl font-bold">{file.name}</h1>
-              <h1 className="text-xl font-bold">{file.description}</h1>
+            <a
+              key={file._id}
+              className="card-files"
+              href={file.file.url}
+              target="blank"
+            >
+              <h1 className="card-files-tittle">{file.name}</h1>
+              <h1 className="card-files-desc">{file.description}</h1>
               {file.isApproved ? (
-                <div className="text-xl font-bold">
-                  <p>Icono</p>
-                  <p>{file.approver}</p>
+                <div className="files-approver">
+                  <i id="icon-approver" className="fa-solid fa-circle-check" />
+                  <p>{file.approver}Aprobado</p>
+                  <i id="comments" className="fa-regular fa-comments" />
                 </div>
               ) : (
-                <h1 className="text-xl font-bold">Relojito</h1>
+                <div className="files-approver">
+                  <i id="icon-approver" className="fa-regular fa-clock" />
+                  <p>{file.approver}Pendiente</p>
+                  <i id="comments" className="fa-regular fa-comments" />
+                </div>
               )}
-              <a
-                href={file.file.url}
-                className="text-xl font-bold truncate "
-                target="_black"
-              >
-                Abrir archivo
-              </a>
-            </div>
+            </a>
           ))}
       </div>
     </div>
