@@ -3,11 +3,11 @@ import { useContextProvider } from "../../context/ContextProvider";
 import { useNavigate } from "react-router-dom";
 const FacultiesCard = ({ item }) => {
   const navigate = useNavigate();
-  const { getUsersFaculties, userFaculties } = useContextProvider();
+  const { getUsersFaculties } = useContextProvider();
 
   const handdleVisit = async (id) => {
     await getUsersFaculties(id);
-    navigate("/users");
+    navigate(`/users-page/${id}`);
   };
   return (
     <div className="facult-cards" onClick={() => handdleVisit(item._id)}>

@@ -1,6 +1,9 @@
 import axios from "axios";
 import { VITE_API_URL, CREDENTIALS } from "../config/config";
 
+export const requestRegister = async (data) =>
+  await axios.post(`${VITE_API_URL}/api/users/`, data, CREDENTIALS);
+
 export const requestLogin = async (data) =>
   await axios.post(`${VITE_API_URL}/api/users/login`, data, CREDENTIALS);
 
@@ -33,3 +36,6 @@ export const requestLogout = async () =>
 
 export const requestToken = async () =>
   await axios.post(`${VITE_API_URL}/api/users/token`, CREDENTIALS);
+
+export const requestCreateFaculty = async (newFaculty) =>
+  await axios.post(`${VITE_API_URL}/api/faculties/`, newFaculty, CREDENTIALS);

@@ -2,10 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContextProvider } from "../../context/ContextProvider";
 import LinkSideBar from "./LinkSideBar";
 import { ROLES } from "../../config/config";
+import CardFacultySideBar from "./CardFacultySideBar";
 
 const SideBar = () => {
   const navigate = useNavigate();
-  const { authenticated, logout } = useContextProvider();
+  const { authenticated, logout, faculties } = useContextProvider();
   const handdlelogout = async () => {
     await logout();
     navigate("/login");
@@ -25,17 +26,15 @@ const SideBar = () => {
               <span className="rol-label">Rol asignado</span>
               <span className="rol">SuperAdmin</span>
             </div>
-            <LinkSideBar route="/home" iconName="fa-house" title="Home" />
-            <LinkSideBar
-              route="/create-users"
-              iconName="fa-user-plus"
-              title="Crear usuarios"
-            />
-            <LinkSideBar
-              route="/home"
-              iconName="fa-layer-group"
-              title="Crear facultades"
-            />
+            <LinkSideBar route="/home" iconName="fa-house" title="Facultades" />
+            <h2 className="text-white ml-5 mt-4 font-bold text-2xl">
+              Lista de facultades
+            </h2>
+            <div className="h-[calc(100vh-320px)] mt-3 mb-3 overflow-auto">
+              {faculties.reverse().map((item) => (
+                <CardFacultySideBar key={item._id} item={item} />
+              ))}
+            </div>
           </div>
         )}
         {authenticated?.rol === ROLES.ADMIN && (

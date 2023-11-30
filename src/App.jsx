@@ -3,7 +3,6 @@ import Login from "./public/pages/Login";
 import Home from "./auth/pages/Home";
 import ProtectedRoutes from "./auth/components/ProtectedRoutes";
 import { useContextProvider } from "./context/ContextProvider";
-import CreateUsers from "./auth/pages/CreateUsers";
 import SideBar from "./auth/components/SideBar";
 import UsersPage from "./auth/pages/UsersPage";
 
@@ -19,8 +18,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/home" element={<Home />} />
-            <Route path="/create-users" element={<CreateUsers />} />
-            <Route path="/users" element={<UsersPage />} />
+            <Route path="/users-page/:id" element={<UsersPage />} />
           </Route>
         </Routes>
       </div>

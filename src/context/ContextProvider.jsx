@@ -7,6 +7,8 @@ import {
   requestFiles,
   requestLogout,
   requestToken,
+  requestRegister,
+  requestCreateFaculty,
 } from "../api/usersRequest";
 const context = createContext();
 
@@ -19,6 +21,11 @@ export const ContextProvider = ({ children }) => {
   const [userFaculties, setUserFaculties] = useState([]);
   const [faculties, setFaculties] = useState([]);
   const [files, setFiles] = useState([]);
+
+  const userRegister = async (dataUser) => {
+    const response = await requestRegister(dataUser);
+    setUserFaculties([...userFaculties, response.data]);
+  };
 
   const userLogin = async (data) => {
     const response = await requestLogin(data);
@@ -57,6 +64,12 @@ export const ContextProvider = ({ children }) => {
     return response.data;
   };
 
+  const createFaculty = async (data) => {
+    const response = await requestCreateFaculty(data);
+    //console.log(response.data);
+    setFaculties([...faculties, response.data]);
+  };
+
   return (
     <context.Provider
       value={{
@@ -72,6 +85,8 @@ export const ContextProvider = ({ children }) => {
         getFiles,
         logout,
         verifyToken,
+        userRegister,
+        createFaculty,
       }}
     >
       {children}
