@@ -367,7 +367,8 @@ nav {
   color: var(--color-text);
   text-transform: uppercase;
 }
-.search-home {
+.search-home,
+.search-home-profile {
   position: relative;
   width: 30rem;
   height: 2rem;
@@ -375,10 +376,12 @@ nav {
   justify-content: center;
   align-items: center;
 }
-.search-home i {
+.search-home i,
+.search-home-profile i {
   position: absolute;
   left: 0.3rem;
   font-size: 1.4em;
+  color: var(--color-text);
 }
 .search-input {
   width: 100%;
@@ -391,7 +394,7 @@ nav {
 .line-home {
   width: 80%;
   min-height: 0.12rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   background-color: var(--color-text);
 }
 .container-cards {
@@ -512,33 +515,51 @@ nav {
   align-items: center;
   flex-direction: column;
 }
-.card-user {
-  position: relative;
+.card-back {
   width: 100%;
+  position: relative;
   height: 4rem;
+  background: var(--color-text);
+  border-radius: 1rem;
+  margin: 0.2rem;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.card-back i {
+  position: absolute;
+  right: 0.6rem;
+  color: white;
+  z-index: 1;
+}
+.card-user {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   padding: 0 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   border-radius: 1rem;
-  cursor: pointer;
-  margin: 0.2rem;
+  z-index: 2;
   background: white;
 }
-.card-user:hover {
+.card-back:hover .card-user {
   color: var(--color-back);
   background: var(--color-primary);
-  margin-left: -2rem;
-  margin-right: 2rem;
-  /* transition: 0.3s all; */
+  right: 2rem;
+  transition: all 0.3s;
 }
-.card-user:hover img {
+.card-back:hover .card-user img {
   width: 3.8rem;
   height: 3.8rem;
   margin-bottom: 1rem;
   border-radius: 0.2rem;
-  box-shadow: 0px 4px 8px #2b2b2b79;
+  box-shadow: 0rem 0.3rem 0.5rem #2b2b2b79;
 }
 .card-user img {
   width: 3.2rem;
@@ -547,77 +568,162 @@ nav {
   border-radius: 50%;
   transition: 0.5s all;
 }
-/* .odd-row {
-  background-color: #f0f0f0;
-}
-.even-row {
-  background-color: #ffffff;
-} */
-.container-files {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  /* align-items: center; */
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  flex-wrap: wrap;
-}
-.card-files {
+.top-info-home-profile {
   position: relative;
-  width: 10rem;
-  height: 6rem;
+  width: 100%;
+  height: 12rem;
   display: flex;
-  flex-direction: column;
-  background: white;
-  overflow: hidden;
-  border: 0.15rem solid var(--color-text);
-  border-radius: 0.8rem;
-  text-align: center;
-  justify-content: space-between;
-  transition: 0.3s all;
+  justify-content: center;
+  align-items: center;
+  margin-top: -1.5rem;
+  padding: 2rem;
 }
-.card-files-tittle {
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.76em;
-  width: 100%;
-  background: #dbdbdb;
-}
-.card-files-desc {
-  font-size: 0.76em;
-  width: 100%;
-}
-.files-approver {
-  position: relative;
+.tittle-with-icon-profile {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 85%;
+  height: 100%;
+  gap: 2rem;
+}
+.tittle-with-icon-profile img {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0.05rem 0.05rem 0.3rem var(--color-text);
+}
+.tittle-home-profile {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 2.2em;
+  color: var(--color-text);
+}
+.email-home-profile,
+.rol-home-profile {
+  font-size: 1em;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.email-home-profile i,
+.rol-home-profile i {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.8em;
+  margin-right: 0.6rem;
+}
+.search-home-profile {
+  margin: 1rem;
+}
+.container-files {
+  width: 80%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.files-back {
+  width: 100%;
+  height: 4rem;
+  margin: 0.2rem;
+  border-radius: 0.8rem;
   background: var(--color-text);
-  color: white;
-  width: 100%;
-  padding: 0.2rem;
+  position: relative;
+  transition: 0.3s all;
 }
-
-.files-approver p {
-  width: 100%;
-  padding: 0 1rem;
-  font-family: 600;
-  font-size: 0.7em;
-}
-#icon-approver {
-  position: absolute;
-  left: 0.5rem;
-}
-#comments {
+.files-back .menu {
   position: absolute;
   right: 0.5rem;
+  font-size: 1.2em;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
-.card-files:hover {
+
+.files-back:hover .card-files {
+  right: 2rem;
   background: var(--color-primary);
+  transition: 0.3s all;
+}
+.files-back:hover .card-files .file-icon,
+.files-back:hover .card-files .file-tittle,
+.files-back:hover .card-files .file-desc,
+.files-back:hover .card-files .file-approver,
+.files-back:hover .card-files .file-comments {
   color: white;
 }
-.card-files:hover .card-files-tittle {
-  background: #e0e0e0;
+.card-files {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  text-align: left;
+  align-items: center;
+  z-index: 2;
+  border-radius: 0.8rem;
+}
+.file-icon {
+  width: 5%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4em;
+  color: var(--color-text);
+}
+.file-tittle {
+  height: 90%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  text-wrap: wrap;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding: 0.4rem;
+  color: var(--color-text);
+}
+.file-desc {
+  width: 40%;
+  height: 90%;
+  font-size: 0.7em;
+  display: flex;
+  align-items: center;
+  text-wrap: wrap;
+  padding: 0.4rem;
+  color: var(--color-text);
+}
+.file-approver {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.4rem;
+  color: var(--color-text);
+  gap: 0.5rem;
+}
+.file-approver p {
+  font-size: 0.8em;
+}
+.file-approver i {
+  font-size: 1em;
+}
+.file-comments {
+  width: 5%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: var(--color-text);
 }
