@@ -23,7 +23,7 @@ const CreateUserModal = ({ setIsModalOpen }) => {
   };
 
   return (
-    <div className="w-[500px] h-[600px]  bg-emerald-900 absolute top-[30%] left-[35%] rounded-lg flex justify-center items-center">
+    <div className="w-[500px] h-[600px]  bg-emerald-900 absolute top-[30%] left-[35%] rounded-lg flex justify-center items-center z-50">
       <div className="w-full relative">
         <button
           className="absolute -top-[200px] right-0 text-white font-bold text-2xl p-3"
