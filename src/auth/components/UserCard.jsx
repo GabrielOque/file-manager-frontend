@@ -17,7 +17,9 @@ const UserCard = ({ user, index }) => {
         <p>{user.email}</p>
         <p>{user.rol}</p>
       </div>
-      <i className="fa-solid fa-square-up-right" />
+      <div className="menu-user">
+        <i className="fa-solid fa-square-up-right" />
+      </div>
     </div>
   );
 };
