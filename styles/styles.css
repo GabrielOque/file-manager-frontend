@@ -635,7 +635,6 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   transition: all 0.3s;
 }
 .card-user {
@@ -650,11 +649,12 @@ nav {
   border-radius: 1rem;
   z-index: 2;
   background: white;
+  cursor: pointer;
 }
 .card-back:hover .card-user {
   color: var(--color-back);
   background: var(--color-primary);
-  right: 2rem;
+  transform: translateX(-2rem);
   transition: all 0.3s;
 }
 .card-back:hover .card-user img {
@@ -670,6 +670,12 @@ nav {
   object-fit: cover;
   border-radius: 50%;
   transition: 0.5s all;
+}
+.card-back .menu-user {
+  position: absolute;
+  right: 0.6rem;
+  color: white;
+  cursor: pointer;
 }
 .top-info-home-profile {
   position: relative;
@@ -741,17 +747,17 @@ nav {
   position: absolute;
   right: 0.5rem;
   font-size: 1.2em;
-  z-index: 1;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   text-align: center;
+  cursor: pointer;
 }
 
 .files-back:hover .card-files {
-  right: 2rem;
+  transform: translateX(-2rem);
   background: var(--color-primary);
   transition: 0.3s all;
 }
@@ -836,6 +842,7 @@ nav {
   align-items: center;
   font-size: 1.2em;
   color: var(--color-text);
+  text-align: center;
 }
 .file-comments i {
   position: absolute;
