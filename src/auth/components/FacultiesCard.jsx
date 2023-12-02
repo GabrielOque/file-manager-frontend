@@ -1,7 +1,11 @@
-import React from "react";
+import { useState } from "react";
 import { useContextProvider } from "../../context/ContextProvider";
 import { useNavigate } from "react-router-dom";
+import UpdateFacultyModal from "./UpdateFacultyModal";
+import DeleteFacultyModal from "./DeleteFacultyModal";
 const FacultiesCard = ({ item }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const navigate = useNavigate();
   const { getUsersFaculties } = useContextProvider();
 
@@ -22,13 +26,27 @@ const FacultiesCard = ({ item }) => {
       <div className="facult-icon">
         <i
           className="fa-solid fa-trash"
-          onClick={() => console.log("delete")}
+          onClick={() => setIsModalDeleteOpen(!isModalDeleteOpen)}
         />
         <i
           className="fa-solid fa-pen-to-square"
-          onClick={() => console.log("edit")}
+          onClick={() => setIsModalOpen(!isModalOpen)}
         />
       </div>
+      {isModalOpen && (
+        <UpdateFacultyModal
+          setIsModalOpen={setIsModalOpen}
+          id={item._id}
+          name={item.name}
+        />
+      )}
+      {isModalDeleteOpen && (
+        <DeleteFacultyModal
+          setIsModalDeleteOpen={setIsModalDeleteOpen}
+          id={item._id}
+          name={item.name}
+        />
+      )}
     </div>
   );
 };

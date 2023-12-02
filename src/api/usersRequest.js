@@ -25,6 +25,9 @@ export const requestUsersFaculties = async (id) =>
     CREDENTIALS
   );
 
+export const requestUpdateFaculty = async (id, data) =>
+  await axios.put(`${VITE_API_URL}/api/faculties/${id}`, data, CREDENTIALS);
+
 export const requestFaculties = async () =>
   await axios.get(`${VITE_API_URL}/api/faculties`, CREDENTIALS);
 
@@ -39,3 +42,6 @@ export const requestToken = async () =>
 
 export const requestCreateFaculty = async (newFaculty) =>
   await axios.post(`${VITE_API_URL}/api/faculties/`, newFaculty, CREDENTIALS);
+
+export const requestDeleteFaculty = async (id) =>
+  await axios.delete(`${VITE_API_URL}/api/faculties/${id}`, CREDENTIALS);

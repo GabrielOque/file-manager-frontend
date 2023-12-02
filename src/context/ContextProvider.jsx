@@ -9,6 +9,8 @@ import {
   requestToken,
   requestRegister,
   requestCreateFaculty,
+  requestUpdateFaculty,
+  requestDeleteFaculty,
 } from "../api/usersRequest";
 const context = createContext();
 
@@ -70,6 +72,18 @@ export const ContextProvider = ({ children }) => {
     setFaculties([...faculties, response.data]);
   };
 
+  const updateFaculty = async (id, data) => {
+    const response = await requestUpdateFaculty(id, data);
+    setFaculties(
+      faculties.map((item) => (item._id === id ? response.data : item))
+    );
+  };
+
+  const deleteFaculty = async (id) => {
+    await requestDeleteFaculty(id);
+    setFaculties(faculties.filter((item) => item._id !== id));
+  };
+
   return (
     <context.Provider
       value={{
@@ -87,6 +101,8 @@ export const ContextProvider = ({ children }) => {
         verifyToken,
         userRegister,
         createFaculty,
+        updateFaculty,
+        deleteFaculty,
       }}
     >
       {children}

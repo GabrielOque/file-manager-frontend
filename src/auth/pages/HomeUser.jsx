@@ -20,7 +20,11 @@ const HomeUser = () => {
       <div className="top-info-home-profile">
         <div className="tittle-with-icon-profile">
           {authenticated.avatar.public_id ? (
-            <img src={authenticated.avata.url} draggable="false" alt="avatar" />
+            <img
+              src={authenticated.avatar.url}
+              draggable="false"
+              alt="avatar"
+            />
           ) : (
             <img src={defaultImage} draggable="false" alt="avatar" />
           )}
