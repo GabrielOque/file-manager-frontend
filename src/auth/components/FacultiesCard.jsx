@@ -20,7 +20,14 @@ const FacultiesCard = ({ item }) => {
       </div>
       <h2 className="interact">Visitar</h2>
       <div className="facult-icon">
-        <i className="fa-solid fa-ellipsis-vertical" />
+        <i
+          className="fa-solid fa-trash"
+          onClick={() => console.log("delete")}
+        />
+        <i
+          className="fa-solid fa-pen-to-square"
+          onClick={() => console.log("edit")}
+        />
       </div>
     </div>
   );

@@ -423,8 +423,8 @@ nav {
 }
 .container-cards .facult-cards .interact {
   position: absolute;
-  width: 100%;
-  bottom: 1rem;
+  bottom: 0.8rem;
+  left: 1rem;
   font-size: 1.2em;
   letter-spacing: 0.4em;
   color: #9ca3af;
@@ -434,17 +434,21 @@ nav {
 }
 .container-cards .facult-cards .facult-icon {
   position: absolute;
-  width: 10%;
-  bottom: 0.7rem;
+  bottom: 1rem;
   right: 1rem;
   font-size: 1.5em;
   color: #9ca3af;
   text-transform: uppercase;
   text-align: end;
   font-weight: 600;
-  cursor: pointer;
   pointer-events: all;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
   z-index: 1;
+}
+.container-cards .facult-cards .facult-icon i {
+  cursor: pointer;
 }
 .container-cards .facult-cards .box {
   position: absolute;
