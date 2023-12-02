@@ -18,10 +18,10 @@ const FacultiesCard = ({ item }) => {
           <p className="text-id-facult-cards">{item._id}</p>
         </div>
       </div>
+      <h2 className="interact">Visitar</h2>
       <div className="facult-icon">
         <i className="fa-solid fa-ellipsis-vertical" />
       </div>
-      <h2 className="interact">Visitar</h2>
     </div>
   );
 };

@@ -333,6 +333,9 @@ nav {
   letter-spacing: 0.2rem;
   color: var(--color-text);
 }
+.facult-list {
+  height: 4rem;
+}
 .home {
   overflow-x: hidden;
   height: 100vh;
@@ -431,8 +434,8 @@ nav {
 }
 .container-cards .facult-cards .facult-icon {
   position: absolute;
-  width: 100%;
-  bottom: 0.8rem;
+  width: 10%;
+  bottom: 0.7rem;
   right: 1rem;
   font-size: 1.5em;
   color: #9ca3af;
@@ -441,6 +444,7 @@ nav {
   font-weight: 600;
   cursor: pointer;
   pointer-events: all;
+  z-index: 1;
 }
 .container-cards .facult-cards .box {
   position: absolute;
@@ -528,12 +532,6 @@ nav {
   align-items: center;
   cursor: pointer;
   transition: all 0.3s;
-}
-.card-back i {
-  position: absolute;
-  right: 0.6rem;
-  color: white;
-  z-index: 1;
 }
 .card-user {
   position: absolute;
@@ -671,6 +669,12 @@ nav {
   z-index: 2;
   border-radius: 0.8rem;
 }
+.file-link {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .file-icon {
   width: 5%;
   height: 100%;
@@ -731,5 +735,5 @@ nav {
 .file-comments i {
   position: absolute;
   z-index: 2;
-  cursor: crosshair;
+  cursor: pointer;
 }

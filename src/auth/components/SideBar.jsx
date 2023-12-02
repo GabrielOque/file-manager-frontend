@@ -27,10 +27,7 @@ const SideBar = () => {
               <span className="rol">SuperAdmin</span>
             </div>
             <LinkSideBar route="/home" iconName="fa-house" title="Facultades" />
-            <h2 className="text-white ml-5 mt-4 font-bold text-2xl">
-              Lista de facultades
-            </h2>
-            <div className="h-[calc(100vh-320px)] mt-3 mb-3 overflow-auto">
+            <div className="facult-list">
               {faculties.reverse().map((item) => (
                 <CardFacultySideBar key={item._id} item={item} />
               ))}

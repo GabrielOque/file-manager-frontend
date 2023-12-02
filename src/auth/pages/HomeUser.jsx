@@ -53,17 +53,19 @@ const HomeUser = () => {
           )
           .map((file) => (
             <div className="files-back" key={file._id}>
-              <a className="card-files" href={file.file.url} target="blank">
-                <div className="file-icon">
-                  <i className="fa-solid fa-file-lines" />
-                </div>
-                <div className="file-tittle">
-                  <h1>{file.name}</h1>
-                </div>
-                <div className="file-desc">
-                  <h1>{file.description}</h1>
-                </div>
-                {!file.isApproved ? (
+              <div className="card-files">
+                <a className="file-link" href={file.file.url} target="blank">
+                  <div className="file-icon">
+                    <i className="fa-solid fa-file-lines" />
+                  </div>
+                  <div className="file-tittle">
+                    <h1>{file.name}</h1>
+                  </div>
+                  <div className="file-desc">
+                    <h1>{file.description}</h1>
+                  </div>
+                </a>
+                {file.isApproved ? (
                   <div className="file-approver">
                     <i className="fa-solid fa-circle-check" />
                     <p>{file.approver}Aprobado</p>
@@ -75,9 +77,9 @@ const HomeUser = () => {
                   </div>
                 )}
                 <div className="file-comments">
-                  <i /*onClick={}*/ className="fa-solid fa-comments" />
+                  <i className="fa-solid fa-comments" />
                 </div>
-              </a>
+              </div>
               <div className="menu">
                 {/* <i className="fa-solid fa-ellipsis-vertical" /> */}
                 <i className="fa-regular fa-trash-can" />
