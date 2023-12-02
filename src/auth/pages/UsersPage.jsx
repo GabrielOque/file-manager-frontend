@@ -2,8 +2,10 @@ import { useContextProvider } from "../../context/ContextProvider";
 import { useState } from "react";
 import UserCard from "../components/UserCard";
 import CreateUserModal from "../components/CreateUserModal";
+import { useParams } from "react-router-dom";
 
 const UsersPage = () => {
+  const params = useParams();
   const { userFaculties, authenticated } = useContextProvider();
   const [search, setSearch] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,36 +21,41 @@ const UsersPage = () => {
         <div className="top-info-home">
           <div className="tittle-with-icon">
             <i className="fa-solid fa-layer-group" />
-            <h1 className="tittle-home">PROFESORES</h1>
+            <h1 className="tittle-home">{params.name}</h1>
           </div>
-          <button
-            className="px-7 py-3 bg-red-600 rounded-lg text-white hover:bg-slate-400"
-            onClick={handdleModal}
-          >
-            Crear usuario
-          </button>
         </div>
         <div className="line-home"></div>
-        <div className="h-full w-full flex justify-center items-center">
-          No hay usuarios para esta facultad
+        <div className="create-and-search">
+          <button className="btn-create" onClick={handdleModal}>
+            <i className="fa-solid fa-user-plus" />
+            Nuevo usuario
+          </button>
+        </div>
+        <div className="nothing">
+          <img
+            src="/src/assets/trabajador.png"
+            alt="not-files"
+            draggable="false"
+          />
+          <h2>No hay usuarios para esta facultad</h2>
         </div>
         {isModalOpen && <CreateUserModal setIsModalOpen={setIsModalOpen} />}
       </div>
     );
   }
-
   return (
     <div className="home relative">
       <div className="top-info-home">
         <div className="tittle-with-icon">
           <i className="fa-solid fa-layer-group" />
-          <h1 className="tittle-home">PROFESORES</h1>
+          <h1 className="tittle-home">{params.name}</h1>
         </div>
-        <button
-          className="px-7 py-3 bg-red-600 rounded-lg text-white hover:bg-slate-400"
-          onClick={handdleModal}
-        >
-          Crear usuario
+      </div>
+      <div className="line-home"></div>
+      <div className="create-and-search">
+        <button className="btn-create" onClick={handdleModal}>
+          <i className="fa-solid fa-user-plus" />
+          Nuevo usuario
         </button>
         <div className="search-home">
           <i className="fa-solid fa-magnifying-glass" />
@@ -59,7 +66,6 @@ const UsersPage = () => {
           />
         </div>
       </div>
-      <div className="line-home"></div>
       <div className="container-users">
         {userFaculties
           .filter((item) =>

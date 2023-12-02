@@ -6,12 +6,13 @@ const CardFacultySideBar = ({ item }) => {
   const { getUsersFaculties } = useContextProvider();
   return (
     <div
-      className="mx-5 py-1 bg-slate-400 mb-3 rounded-lg px-5 font-bold hover:bg-slate-500 cursor-pointer"
+      className="facult-list-one"
       onClick={async () => {
         await getUsersFaculties(item._id);
-        navigate(`/users-page/${item._id}`);
+        navigate(`/users-page/${item.name}/${item._id}`);
       }}
     >
+      <i className="fa-solid fa-caret-right" />
       <div>{item.name}</div>
     </div>
   );
