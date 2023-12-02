@@ -63,7 +63,7 @@ const HomeUser = () => {
                 <div className="file-desc">
                   <h1>{file.description}</h1>
                 </div>
-                {file.isApproved ? (
+                {!file.isApproved ? (
                   <div className="file-approver">
                     <i className="fa-solid fa-circle-check" />
                     <p>{file.approver}Aprobado</p>
@@ -75,7 +75,7 @@ const HomeUser = () => {
                   </div>
                 )}
                 <div className="file-comments">
-                  <i className="fa-solid fa-comments" />
+                  <i /*onClick={}*/ className="fa-solid fa-comments" />
                 </div>
               </a>
               <div className="menu">

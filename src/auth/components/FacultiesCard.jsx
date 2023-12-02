@@ -10,15 +10,17 @@ const FacultiesCard = ({ item }) => {
     navigate(`/users-page/${id}`);
   };
   return (
-    <div className="facult-cards" onClick={() => handdleVisit(item._id)}>
-      <div className="box">
+    <div className="facult-cards">
+      <div className="box" onClick={() => handdleVisit(item._id)}>
         <div className="content">
           <h2>IUE</h2>
           <h3 className="text-name-facult-cards">{item.name}</h3>
           <p className="text-id-facult-cards">{item._id}</p>
         </div>
       </div>
-      <i className="fa-solid fa-ellipsis-vertical" />
+      <div className="facult-icon">
+        <i className="fa-solid fa-ellipsis-vertical" />
+      </div>
       <h2 className="interact">Visitar</h2>
     </div>
   );
