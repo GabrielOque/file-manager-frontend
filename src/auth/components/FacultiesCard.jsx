@@ -11,7 +11,7 @@ const FacultiesCard = ({ item }) => {
 
   const handdleVisit = async (id) => {
     await getUsersFaculties(id);
-    navigate(`/users-page/${id}`);
+    navigate(`/users-page/${item.name}/${id}`);
   };
   return (
     <div className="facult-cards">

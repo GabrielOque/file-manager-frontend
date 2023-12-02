@@ -25,18 +25,23 @@ const HomeSuperAdmin = () => {
         <div className="top-info-home">
           <div className="tittle-with-icon">
             <i className="fa-solid fa-layer-group" />
-            <h1 className="tittle-home">PROFESORES</h1>
+            <h1 className="tittle-home">FACULTADES</h1>
           </div>
-          <button
-            className="px-7 py-3 bg-red-600 rounded-lg text-white hover:bg-slate-400"
-            onClick={handdleModal}
-          >
-            Crear facultad
-          </button>
         </div>
         <div className="line-home"></div>
-        <div className="h-full w-full flex justify-center items-center">
-          No hay usuarios para esta facultad
+        <div className="create-and-search">
+          <button className="btn-create" onClick={handdleModal}>
+            <i className="fa-solid fa-user-plus" />
+            Nueva facultad
+          </button>
+        </div>
+        <div className="nothing">
+          <img
+            src="/src/assets/trabajador.png"
+            alt="not-files"
+            draggable="false"
+          />
+          <h2>No hay facultades</h2>
         </div>
         {isModalOpen && <CreateFacultyModal setIsModalOpen={setIsModalOpen} />}
       </div>
@@ -49,22 +54,22 @@ const HomeSuperAdmin = () => {
           <i className="fa-solid fa-layer-group" />
           <h1 className="tittle-home">FACULTADES</h1>
         </div>
-        <button
-          className="px-7 py-3 bg-red-600 rounded-lg text-white hover:bg-slate-400"
-          onClick={handdleModal}
-        >
-          Crear facultad
+      </div>
+      <div className="line-home"></div>
+      <div className="create-and-search">
+        <button className="btn-create" onClick={handdleModal}>
+          <i className="fa-regular fa-square-plus" />
+          Nueva facultad
         </button>
         <div className="search-home">
           <i className="fa-solid fa-magnifying-glass" />
           <input
             onChange={handdleSearch}
-            placeholder="Buscar Facultad"
+            placeholder="Buscar facultad"
             className="search-input"
           />
         </div>
       </div>
-      <div className="line-home"></div>
       <div className="container-cards">
         {faculties
           .filter((item) =>
