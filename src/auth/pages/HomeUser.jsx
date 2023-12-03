@@ -11,7 +11,12 @@ const HomeUser = () => {
       await getFiles(authenticated._id);
     })();
   }, []);
-  if (!Array.isArray(files) || files.length === 0) return <h1>Cargando</h1>;
+  if (!Array.isArray(files) || files.length === 0)
+    return (
+      <div className="home">
+        <Profile user={authenticated} />
+      </div>
+    );
   const handdleSearch = (e) => {
     setSearch(e.target.value);
   };

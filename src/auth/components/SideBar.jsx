@@ -62,7 +62,7 @@ const SideBar = () => {
             </li>
 
             <div className="facult-list">
-              {faculties.reverse().map((item) => (
+              {faculties.map((item) => (
                 <CardFacultySideBar key={item._id} item={item} />
               ))}
             </div>
