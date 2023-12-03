@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { set, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { useContextProvider } from "../../context/ContextProvider";
+import loginImage from "../../assets/login-image.jpg";
 const Login = () => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Login = () => {
       <div className="rect2"></div>
       <div className="login-primary">
         <div className="login-image">
-          <img src="/src/assets/login-image.jpg" alt="" draggable="false" />
+          <img src={loginImage} alt="" draggable="false" />
         </div>
         <div className="login-container">
           <div className="login-content">
