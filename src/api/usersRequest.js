@@ -45,3 +45,26 @@ export const requestCreateFaculty = async (newFaculty) =>
 
 export const requestDeleteFaculty = async (id) =>
   await axios.delete(`${VITE_API_URL}/api/faculties/${id}`, CREDENTIALS);
+
+export const requestUser = async (id) =>
+  await axios.get(`${VITE_API_URL}/api/users/profile/${id}`, CREDENTIALS);
+
+export const requestApproveFile = async (id, data) =>
+  await axios.put(`${VITE_API_URL}/api/files/${id}`, data, CREDENTIALS);
+
+export const requestComments = async (id) =>
+  await axios.get(`${VITE_API_URL}/api/comments/${id}`, CREDENTIALS);
+
+export const requestCreateComment = async (data) =>
+  await axios.post(`${VITE_API_URL}/api/comments/`, data, CREDENTIALS);
+
+export const requestUpdateUploadFile = async (data) => {
+  const form = new FormData();
+  for (let key in data) {
+    form.append(key, data[key]);
+  }
+  return await axios.post(`${VITE_API_URL}/api/files/`, form, CREDENTIALS);
+};
+
+export const requestDeleteFile = async (id) =>
+  await axios.delete(`${VITE_API_URL}/api/files/${id}`, CREDENTIALS);

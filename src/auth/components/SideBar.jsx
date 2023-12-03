@@ -6,10 +6,34 @@ import CardFacultySideBar from "./CardFacultySideBar";
 
 const SideBar = () => {
   const navigate = useNavigate();
-  const { authenticated, logout, faculties } = useContextProvider();
+  const {
+    authenticated,
+    logout,
+    faculties,
+    setAuthenticated,
+    setFaculties,
+    setFiles,
+    setUserFaculties,
+    getFiles,
+    getUser,
+  } = useContextProvider();
+
+  const resetContext = () => {
+    setAuthenticated(null);
+    setFaculties([]);
+    setFiles([]);
+    setUserFaculties([]);
+  };
   const handdlelogout = async () => {
     await logout();
+    resetContext();
     navigate("/login");
+  };
+
+  const handleUser = async () => {
+    await getFiles(authenticated._id);
+    await getUser(authenticated._id);
+    navigate(`/files-page/${authenticated?._id}`);
   };
   return (
     <nav className="w-1/6">
@@ -27,6 +51,16 @@ const SideBar = () => {
               <span className="rol">SuperAdmin</span>
             </div>
             <LinkSideBar route="/home" iconName="fa-house" title="Facultades" />
+
+            <li>
+              <button className="btn-sidebar-home" onClick={handleUser}>
+                <span className="icon">
+                  <i className={`fa-solid fa-user`} />
+                </span>
+                <span className="text">Perfil</span>
+              </button>
+            </li>
+
             <div className="facult-list">
               {faculties.reverse().map((item) => (
                 <CardFacultySideBar key={item._id} item={item} />
@@ -41,6 +75,14 @@ const SideBar = () => {
               <span className="rol">SuperAdmin</span>
             </div>
             <LinkSideBar route="/home" iconName="fa-house" title="Home" />
+            <li>
+              <button className="btn-sidebar-home" onClick={handleUser}>
+                <span className="icon">
+                  <i className={`fa-solid fa-user`} />
+                </span>
+                <span className="text">Perfil</span>
+              </button>
+            </li>
             <LinkSideBar
               route="/create-users"
               iconName="fa-user-plus"

@@ -11,7 +11,14 @@ import {
   requestCreateFaculty,
   requestUpdateFaculty,
   requestDeleteFaculty,
+  requestUser,
+  requestApproveFile,
+  requestComments,
+  requestCreateComment,
+  requestUpdateUploadFile,
+  requestDeleteFile,
 } from "../api/usersRequest";
+import { get, set } from "react-hook-form";
 const context = createContext();
 
 export const useContextProvider = () => {
@@ -23,6 +30,8 @@ export const ContextProvider = ({ children }) => {
   const [userFaculties, setUserFaculties] = useState([]);
   const [faculties, setFaculties] = useState([]);
   const [files, setFiles] = useState([]);
+  const [user, setUser] = useState();
+  const [comments, setComments] = useState([]);
 
   const userRegister = async (dataUser) => {
     const response = await requestRegister(dataUser);
@@ -68,7 +77,7 @@ export const ContextProvider = ({ children }) => {
 
   const createFaculty = async (data) => {
     const response = await requestCreateFaculty(data);
-    //console.log(response.data);
+    // console.log(response.data);
     setFaculties([...faculties, response.data]);
   };
 
@@ -84,6 +93,40 @@ export const ContextProvider = ({ children }) => {
     setFaculties(faculties.filter((item) => item._id !== id));
   };
 
+  const getUser = async (id) => {
+    const response = await requestUser(id);
+    setUser(response.data);
+  };
+
+  const updateStatus = async (id, status) => {
+    const response = await requestApproveFile(id, status);
+    console.log(response.data);
+    setFiles(files.map((item) => (item._id === id ? response.data : item)));
+  };
+
+  const getComments = async (id) => {
+    const response = await requestComments(id);
+    console.log(response.data);
+    setComments(response.data);
+  };
+
+  const createComment = async (data) => {
+    const response = await requestCreateComment(data);
+    console.log(response.data);
+    setComments([...comments, response.data]);
+  };
+
+  const uploadFile = async (data) => {
+    const response = await requestUpdateUploadFile(data);
+    console.log(response.data);
+    setFiles([...files, response.data]);
+  };
+
+  const deleteFile = async (id) => {
+    await requestDeleteFile(id);
+    setFiles(files.filter((item) => item._id !== id));
+  };
+
   return (
     <context.Provider
       value={{
@@ -92,10 +135,13 @@ export const ContextProvider = ({ children }) => {
         userLogin,
         updateUser,
         userFaculties,
+        setUserFaculties,
         getUsersFaculties,
         faculties,
+        setFaculties,
         getFaculties,
         files,
+        setFiles,
         getFiles,
         logout,
         verifyToken,
@@ -103,6 +149,14 @@ export const ContextProvider = ({ children }) => {
         createFaculty,
         updateFaculty,
         deleteFaculty,
+        user,
+        getUser,
+        updateStatus,
+        comments,
+        getComments,
+        createComment,
+        uploadFile,
+        deleteFile,
       }}
     >
       {children}

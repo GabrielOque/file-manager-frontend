@@ -1,13 +1,18 @@
 import defaultImage from "../../assets/default.png";
 import { getFullName } from "../../helpers/helpers";
+import { useNavigate } from "react-router-dom";
+import { useContextProvider } from "../../context/ContextProvider";
 
-const UserCard = ({ user, index }) => {
+const UserCard = ({ user }) => {
+  const { getUser } = useContextProvider();
+  const navigate = useNavigate();
+  const handleUser = async () => {
+    await getUser(user._id);
+    navigate(`/files-page/${user._id}`);
+  };
   return (
     <div className="card-back">
-      <div
-        className="card-user"
-        // className={index % 2 === 0 ? " card-user even-row" : "card-user odd-row"}
-      >
+      <div className="card-user" onClick={() => handleUser()}>
         {user.avatar.public_id ? (
           <img src={user.avatar.url} draggable="false" />
         ) : (

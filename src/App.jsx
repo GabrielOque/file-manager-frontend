@@ -5,6 +5,7 @@ import ProtectedRoutes from "./auth/components/ProtectedRoutes";
 import { useContextProvider } from "./context/ContextProvider";
 import SideBar from "./auth/components/SideBar";
 import UsersPage from "./auth/pages/UsersPage";
+import FilesPage from "./auth/pages/FilesPage";
 
 const App = () => {
   const { authenticated } = useContextProvider();
@@ -19,6 +20,7 @@ const App = () => {
           <Route element={<ProtectedRoutes />}>
             <Route path="/home" element={<Home />} />
             <Route path="/users-page/:name/:id" element={<UsersPage />} />
+            <Route path="/files-page/:id" element={<FilesPage />} />
           </Route>
         </Routes>
       </div>

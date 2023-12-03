@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useContextProvider } from "../../context/ContextProvider";
 import FileCard from "../components/FileCard";
 import Profile from "../components/Profile";
 
-const HomeUser = () => {
-  const { getFiles, authenticated, files } = useContextProvider();
+const FilesPage = () => {
+  const params = useParams();
+  const { getFiles, files, user } = useContextProvider();
   const [search, setSearch] = useState("");
-  useEffect(() => {
-    (async () => {
-      await getFiles(authenticated._id);
-    })();
-  }, []);
-  if (!Array.isArray(files) || files.length === 0) return <h1>Cargando</h1>;
   const handdleSearch = (e) => {
     setSearch(e.target.value);
   };
+  useEffect(() => {
+    (async () => {
+      await getFiles(params.id);
+    })();
+  }, []);
   return (
     <div className="home">
-      <Profile user={authenticated} />
+      <Profile user={user} />
       <div className="search-home-profile">
         <i className="fa-solid fa-magnifying-glass" />
         <input
@@ -31,6 +32,7 @@ const HomeUser = () => {
           .filter((file) =>
             file?.name.toLowerCase().includes(search.toLowerCase())
           )
+          .reverse()
           .map((file) => (
             <FileCard key={file._id} file={file} />
           ))}
@@ -39,4 +41,4 @@ const HomeUser = () => {
   );
 };
 
-export default HomeUser;
+export default FilesPage;

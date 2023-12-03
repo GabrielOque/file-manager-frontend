@@ -1,6 +1,27 @@
-import React from "react";
+import { useState } from "react";
+import { useContextProvider } from "../../context/ContextProvider";
+import { ROLES } from "../../config/config";
+import CommentModal from "./CommentModal";
 
 const FileCard = ({ file }) => {
+  const { authenticated, updateStatus, deleteFile } = useContextProvider();
+  const [showModal, setShowModal] = useState(false);
+
+  const approveFile = async (id, data) => {
+    await updateStatus(id, data);
+  };
+  const handleHheck = (e) => {
+    const data = {
+      isApproved: e.target.checked,
+      approver: authenticated.name,
+    };
+
+    approveFile(file._id, data);
+  };
+
+  const handleDelete = async () => {
+    await deleteFile(file._id);
+  };
   return (
     <div className="files-back">
       <div className="card-files">
@@ -15,10 +36,11 @@ const FileCard = ({ file }) => {
             <h1>{file.description}</h1>
           </div>
         </a>
-        {file.isApproved ? (
+        {file.status.isApproved ? (
           <div className="file-approver">
             <i className="fa-solid fa-circle-check" />
             <p>{file.approver}Aprobado</p>
+            <p>{file.status.approver}</p>
           </div>
         ) : (
           <div className="file-approver">
@@ -26,14 +48,28 @@ const FileCard = ({ file }) => {
             <p>{file.approver}Pendiente</p>
           </div>
         )}
-        <div className="file-comments" onClick={() => console.log("Comment")}>
+        <div className="file-comments" onClick={() => setShowModal(!showModal)}>
           <i className="fa-solid fa-comments" />
         </div>
       </div>
-      <div className="menu" onClick={() => console.log("Delete")}>
-        {/* <i className="fa-solid fa-ellipsis-vertical" /> */}
-        <i className="fa-regular fa-trash-can" />
-      </div>
+      {file.author !== authenticated._id &&
+      (authenticated.rol === ROLES.SUPER_ADMIN ||
+        authenticated.rol === ROLES.ADMIN) ? (
+        <div className="menu">
+          <input
+            checked={file.status.isApproved}
+            type="checkbox"
+            className="bg-slate-50 "
+            onChange={handleHheck}
+          />
+        </div>
+      ) : (
+        <div className="menu" onClick={() => handleDelete()}>
+          {/* <i className="fa-solid fa-ellipsis-vertical" /> */}
+          <i className="fa-regular fa-trash-can" />
+        </div>
+      )}
+      {showModal && <CommentModal setShowModal={setShowModal} file={file} />}
     </div>
   );
 };
