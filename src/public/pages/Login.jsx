@@ -21,13 +21,20 @@ const Login = () => {
 
   useEffect(() => {
     (async () => {
-      const token = await verifyToken();
-      if (token._id) {
-        setAuthenticated(token);
-        navigate("/home");
+      try {
+        const token = await verifyToken();
+        if (token._id) {
+          setAuthenticated(token);
+          navigate("/home");
+        }
+      } catch (error) {
+        console.error("Error al verificar el token:", error);
+        // Manejar el error y redirigir al usuario al login
+        navigate("/login");
       }
     })();
   }, []);
+
   return (
     <div className="login-background">
       <div className="rect1"></div>
