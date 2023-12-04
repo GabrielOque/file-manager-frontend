@@ -23,9 +23,13 @@ const Login = () => {
     (async () => {
       try {
         const token = await verifyToken();
+        console.log("Token verificado:", token);
+
         if (token._id) {
           setAuthenticated(token);
+          console.log("Antes de la navegación a /home");
           navigate("/home");
+          console.log("Después de la navegación a /home");
         }
       } catch (error) {
         console.error("Error al verificar el token:", error);
