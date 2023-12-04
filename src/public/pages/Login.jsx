@@ -32,7 +32,7 @@ const Login = () => {
           console.log("Después de la navegación a /home");
         } else {
           console.log("Antes de la navegación a /login");
-          navigate("/login", { replace: true });
+          navigate("/", { replace: true });
           console.log("Después de la navegación a /login");
         }
       } catch (error) {
