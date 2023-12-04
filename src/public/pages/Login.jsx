@@ -19,7 +19,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
+  /*  useEffect(() => {
     (async () => {
       try {
         const token = await verifyToken();
@@ -31,7 +31,33 @@ const Login = () => {
         navigate("/login", { replace: true });
       }
     })();
-  }, [navigate]);
+  }, []); */
+
+  useEffect(() => {
+    const handleUnload = () => {
+      console.log("La página se está recargando");
+      navigate("/", { replace: true });
+    };
+
+    const checkTokenAndRedirect = async () => {
+      try {
+        const token = await verifyToken();
+        if (token._id) {
+          setAuthenticated(token);
+          navigate("/home");
+        }
+      } catch (error) {
+        navigate("/login", { replace: true });
+      }
+    };
+
+    checkTokenAndRedirect();
+    window.addEventListener("beforeunload", handleUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
+  }, []);
 
   return (
     <div className="login-background">
