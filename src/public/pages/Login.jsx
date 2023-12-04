@@ -34,7 +34,7 @@ const Login = () => {
       } catch (error) {
         console.error("Error al verificar el token:", error);
         // Manejar el error y redirigir al usuario al login
-        navigate("/login");
+        navigate("/");
       }
     })();
   }, []);
