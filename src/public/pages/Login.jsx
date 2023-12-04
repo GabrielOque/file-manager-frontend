@@ -25,9 +25,7 @@ const Login = () => {
         const token = await verifyToken();
         if (token._id) {
           setAuthenticated(token);
-          setTimeout(() => {
-            navigate("/home");
-          }, 1000);
+          navigate("/home");
         }
       } catch (error) {
         navigate("/login", { replace: true });
