@@ -31,17 +31,19 @@ const Login = () => {
           navigate("/home");
           console.log("Después de la navegación a /home");
         } else {
-          console.log("Antes de la navegación a /");
-          navigate("/login");
-          console.log("Después de la navegación a /");
+          console.log("Antes de la navegación a /login");
+          navigate("/login", { replace: true });
+          console.log("Después de la navegación a /login");
         }
       } catch (error) {
         console.error("Error al verificar el token:", error);
         // Manejar el error y redirigir al usuario al login
-        navigate("/");
+        console.log("Antes de la navegación a /login (error)");
+        navigate("/login", { replace: true });
+        console.log("Después de la navegación a /login (error)");
       }
     })();
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="login-background">
