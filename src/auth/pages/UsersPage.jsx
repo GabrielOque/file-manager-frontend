@@ -3,6 +3,7 @@ import { useState } from "react";
 import UserCard from "../components/UserCard";
 import CreateUserModal from "../components/CreateUserModal";
 import { useParams } from "react-router-dom";
+import work from "../../assets/trabajador.png";
 
 const UsersPage = () => {
   const params = useParams();
@@ -32,11 +33,7 @@ const UsersPage = () => {
           </button>
         </div>
         <div className="nothing">
-          <img
-            src="/src/assets/trabajador.png"
-            alt="not-files"
-            draggable="false"
-          />
+          <img src={work} alt="not-files" draggable="false" />
           <h2>No hay usuarios para esta facultad</h2>
         </div>
         {isModalOpen && <CreateUserModal setIsModalOpen={setIsModalOpen} />}
