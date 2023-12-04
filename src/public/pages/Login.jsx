@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useContextProvider } from "../../context/ContextProvider";
 import loginImage from "../../assets/login-image.jpg";
 const Login = () => {
@@ -25,7 +25,9 @@ const Login = () => {
         const token = await verifyToken();
         if (token._id) {
           setAuthenticated(token);
-          return navigate("/home");
+          setTimeout(() => {
+            navigate("/home");
+          }, 1000);
         }
       } catch (error) {
         navigate("/login", { replace: true });
