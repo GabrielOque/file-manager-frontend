@@ -30,11 +30,15 @@ const Login = () => {
           console.log("Antes de la navegación a /home");
           navigate("/");
           console.log("Después de la navegación a /home");
+        } else {
+          console.log("Antes de la navegación a /");
+          navigate("/login");
+          console.log("Después de la navegación a /");
         }
       } catch (error) {
         console.error("Error al verificar el token:", error);
         // Manejar el error y redirigir al usuario al login
-        navigate("/");
+        navigate("/login");
       }
     })();
   }, []);
