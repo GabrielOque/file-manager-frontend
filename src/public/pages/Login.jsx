@@ -25,7 +25,7 @@ const Login = () => {
         const token = await verifyToken();
         if (token._id) {
           setAuthenticated(token);
-          navigate("/home");
+          navigate("/home", { replace: true });
         }
       } catch (error) {
         navigate("/login", { replace: true });
