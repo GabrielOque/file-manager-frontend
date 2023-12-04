@@ -28,7 +28,7 @@ const Login = () => {
         if (token._id) {
           setAuthenticated(token);
           console.log("Antes de la navegación a /home");
-          navigate("/home");
+          navigate("/");
           console.log("Después de la navegación a /home");
         }
       } catch (error) {
