@@ -2,6 +2,7 @@ import FacultiesCard from "../components/FacultiesCard";
 import { useEffect, useState } from "react";
 import { useContextProvider } from "../../context/ContextProvider";
 import CreateFacultyModal from "../components/CreateFacultyModal";
+import work from "../../assets/trabajador.png";
 
 const HomeSuperAdmin = () => {
   const { faculties, getFaculties } = useContextProvider();
@@ -36,11 +37,7 @@ const HomeSuperAdmin = () => {
           </button>
         </div>
         <div className="nothing">
-          <img
-            src="/src/assets/trabajador.png"
-            alt="not-files"
-            draggable="false"
-          />
+          <img src={work} alt="not-files" draggable="false" />
           <h2>No hay facultades</h2>
         </div>
         {isModalOpen && <CreateFacultyModal setIsModalOpen={setIsModalOpen} />}
