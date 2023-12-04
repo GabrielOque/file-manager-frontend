@@ -23,32 +23,13 @@ const Login = () => {
     (async () => {
       try {
         const token = await verifyToken();
-        console.log("Token verificado:", token);
-
         if (token._id) {
           setAuthenticated(token);
-          console.log("Antes de la navegación a /home");
           navigate("/home");
-          console.log("Después de la navegación a /home");
-        } else {
-          console.log("Antes de la navegación a /login");
-          navigate("/", { replace: true });
-          console.log("Después de la navegación a /login");
         }
       } catch (error) {
-        console.error("Error al verificar el token:", error);
-        // Manejar el error y redirigir al usuario al login
-        console.log("Antes de la navegación a /login (error)");
         navigate("/login", { replace: true });
-        console.log("Después de la navegación a /login (error)");
       }
-      // Agrega el evento beforeunload al cargar el componente
-      window.addEventListener("beforeunload", handleBeforeUnload);
-
-      // Limpia el evento antes de que el componente se desmonte
-      return () => {
-        window.removeEventListener("beforeunload", handleBeforeUnload);
-      };
     })();
   }, [navigate]);
 
