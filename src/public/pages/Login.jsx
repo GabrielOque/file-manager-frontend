@@ -42,6 +42,13 @@ const Login = () => {
         navigate("/login", { replace: true });
         console.log("Después de la navegación a /login (error)");
       }
+      // Agrega el evento beforeunload al cargar el componente
+      window.addEventListener("beforeunload", handleBeforeUnload);
+
+      // Limpia el evento antes de que el componente se desmonte
+      return () => {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+      };
     })();
   }, [navigate]);
 
