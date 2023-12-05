@@ -12,28 +12,27 @@ const DeleteFacultyModal = ({ id, name, setIsModalDeleteOpen }) => {
   };
 
   return (
-    <div className="w-[250px] h-[100px]  bg-emerald-900 absolute bottom-0  rounded-lg flex justify-center items-center z-50">
-      <div className="w-full relative">
-        <button
-          className="absolute -top-[3px] right-0 text-white font-bold text-xl p-3"
-          onClick={handleStateModal}
-        >
-          x
+    <div className="back-modal-facult">
+      <div className="modal-facult">
+        <button className="btn-close-modal" onClick={handleStateModal}>
+          <i className="fa-solid fa-xmark" />
         </button>
-        <div className="text-center font-bold text-white text-xs mt-5 mb-2">
-          Deseas eliminar {name}?
+        <div className="tittle-modal">
+          <h2>Eliminar</h2>
         </div>
-        <div className="px-6 flex justify-between">
+        <div className="modal-line"></div>
+        <p className="alert-facult">
+          ¿Estás seguro de que deseas eliminar esta facultad y todo lo vinculado
+          a ella?
+        </p>
+        <div className="btns-facult">
           <button
-            className="px-2 py-1 rounded-lg bg-slate-500"
+            className="btn-modal-facult"
             onClick={() => handleStateModal()}
           >
             Cancelar
           </button>
-          <button
-            className="px-2 py-1 rounded-lg bg-slate-500"
-            onClick={() => onsubmit()}
-          >
+          <button className="btn-modal-facult" onClick={() => onsubmit()}>
             Aceptar
           </button>
         </div>

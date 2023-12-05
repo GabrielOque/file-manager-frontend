@@ -50,7 +50,7 @@ export const ContextProvider = ({ children }) => {
 
   const getUsersFaculties = async (id) => {
     const response = await requestUsersFaculties(id);
-    console.log(response.data);
+    // console.log(response.data);
     setUserFaculties(response.data);
   };
 
@@ -61,7 +61,7 @@ export const ContextProvider = ({ children }) => {
 
   const getFiles = async (idAuthor) => {
     const response = await requestFiles(idAuthor);
-    console.log(response.data);
+    // console.log(response.data);
     setFiles(response.data);
   };
 
@@ -100,25 +100,25 @@ export const ContextProvider = ({ children }) => {
 
   const updateStatus = async (id, status) => {
     const response = await requestApproveFile(id, status);
-    console.log(response.data);
+    // console.log(response.data);
     setFiles(files.map((item) => (item._id === id ? response.data : item)));
   };
 
   const getComments = async (id) => {
     const response = await requestComments(id);
-    console.log(response.data);
+    // console.log(response.data);
     setComments(response.data);
   };
 
   const createComment = async (data) => {
     const response = await requestCreateComment(data);
-    console.log(response.data);
+    // console.log(response.data);
     setComments([...comments, response.data]);
   };
 
   const uploadFile = async (data) => {
     const response = await requestUpdateUploadFile(data);
-    console.log(response.data);
+    // console.log(response.data);
     setFiles([...files, response.data]);
   };
 

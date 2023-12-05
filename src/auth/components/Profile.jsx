@@ -24,9 +24,16 @@ const Profile = ({ user }) => {
             </p>
           </div>
         </div>
-        <button onClick={() => setShowModal(!showModal)}>Subir archivo</button>
       </div>
       <div className="line-home"></div>
+
+      <div className="create-and-search pt-3">
+        <button className="btn-create" onClick={() => setShowModal(!showModal)}>
+          <i className="fa-solid fa-file-circle-plus" />
+          Subir archivo
+        </button>
+      </div>
+
       {showModal && <UploadFile setShowModal={setShowModal} user={user} />}
     </>
   );

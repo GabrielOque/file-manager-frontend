@@ -29,39 +29,40 @@ const CommentModal = ({ setShowModal, file }) => {
     reset();
   };
   return (
-    <div className="absolute top-0 left-[20%] h-[700px] w-[600px] bg-slate-600 flex flex-col justify-between items- z-[2147483647]">
-      <button
-        onClick={() => setShowModal((prevState) => !prevState)}
-        className=" absolute right-0 text-white mr-2 mt-2"
-      >
-        X
-      </button>
-
-      <div className="p-5">
-        <h1 className="text-white font-bold text-xl">Comentarios</h1>
-        <div className="flex text-white truncate pl-5 pt-2">
-          <i className="fa-solid fa-file pr-2 text-xl" />
-          <p className=" font-bold">{file.name}</p>
-        </div>
-        <p className="text-white truncate pl-5 pt-2">{file.description}</p>
-      </div>
-      <div className="h-[500px] w-full bg-red-500 overflow-y-auto">
-        {comments.map((comment) => (
-          <CommentCard comment={comment} key={comment._id} />
-        ))}
-      </div>
-      <div className="w-full">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="flex justify-evenly w-full mb-4"
+    <div className="back-modal-comment">
+      <div className="modal-comment">
+        <button
+          className="btn-close-modal"
+          onClick={() => setShowModal((prevState) => !prevState)}
         >
+          <i className="fa-solid fa-xmark" />
+        </button>
+
+        <div className="tittle-modal">
+          <h2>Comentarios</h2>
+        </div>
+        <div className="modal-line"></div>
+        <div className="what-comment">
+          <div className="name-file-comment">
+            <i className="fa-solid fa-file-lines" />
+            <p>{file.name}</p>
+          </div>
+          <p className="desc-comment">{file.description}</p>
+        </div>
+
+        <div className="space-comment">
+          {comments.map((comment) => (
+            <CommentCard comment={comment} key={comment._id} />
+          ))}
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="form-comment">
           <input
             {...register("description", { required: true })}
-            className="py-4 w-[80%] px-5"
+            className="input-comment"
             placeholder="Agrega un mensaje"
           />
-          <button type="onsubmit" className="text-white">
-            Enviar
+          <button type="onsubmit" className="btn-comment">
+            <i className="fa-solid fa-paper-plane" />
           </button>
         </form>
       </div>

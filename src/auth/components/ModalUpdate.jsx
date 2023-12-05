@@ -16,7 +16,7 @@ const ModalUpdate = () => {
       avatar: data.image[0],
     };
     await updateUser(newData);
-    console.log(newData);
+    // console.log(newData);
   };
   const {
     control,

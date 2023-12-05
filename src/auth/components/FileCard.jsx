@@ -24,6 +24,8 @@ const FileCard = ({ file }) => {
   };
   return (
     <div className="files-back">
+      {showModal && <CommentModal setShowModal={setShowModal} file={file} />}
+
       <div className="card-files">
         <a className="file-link" href={file.file.url} target="blank">
           <div className="file-icon">
@@ -38,14 +40,18 @@ const FileCard = ({ file }) => {
         </a>
         {file.status.isApproved ? (
           <div className="file-approver">
-            <i className="fa-solid fa-circle-check" />
-            <p>{file.approver}Aprobado</p>
+            <div className="approver-name">
+              <i className="fa-solid fa-circle-check" />
+              <span>{file.approver}Aprobado</span>
+            </div>
             <p>{file.status.approver}</p>
           </div>
         ) : (
           <div className="file-approver">
-            <i className="fa-regular fa-clock" />
-            <p>{file.approver}Pendiente</p>
+            <div className="approver-name">
+              <i className="fa-regular fa-clock" />
+              <span>{file.approver}Pendiente</span>
+            </div>
           </div>
         )}
         <div className="file-comments" onClick={() => setShowModal(!showModal)}>
@@ -69,7 +75,6 @@ const FileCard = ({ file }) => {
           <i className="fa-regular fa-trash-can" />
         </div>
       )}
-      {showModal && <CommentModal setShowModal={setShowModal} file={file} />}
     </div>
   );
 };

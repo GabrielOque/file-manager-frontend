@@ -172,29 +172,17 @@ body {
   transition: 0.5s;
   overflow: hidden;
   z-index: 2;
-  border: 0.2rem solid var(--color-primary);
+  border: 0.1rem solid var(--color-primary);
   /* border-radius: 0.8rem; */
   letter-spacing: 0.1rem;
   outline: none;
+  background: var(--color-primary);
 }
 .btn:hover {
   color: var(--color-primary);
+  background: transparent;
 }
-.btn::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  border-radius: 50% 50% 0 0;
-  width: 110%;
-  height: 200%;
-  background: var(--color-primary);
-  z-index: -1;
-  transition: 0.5s;
-}
-.btn:hover::before {
-  height: 0%;
-}
+
 .alert1,
 .alert2 {
   position: absolute;
@@ -246,6 +234,8 @@ nav {
 }
 .sidebar {
   overflow: hidden;
+  position: relative;
+  height: 100vh;
 }
 .li-logo {
   width: 100%;
@@ -293,6 +283,7 @@ nav {
 .sidebar li .btn-sidebar-home,
 .sidebar li .btn-sidebar-home-logo {
   display: flex;
+  align-items: center;
   white-space: nowrap;
   text-decoration: none;
   transition: all 0.3s;
@@ -312,22 +303,7 @@ nav {
 } */
 
 .sidebar li .btn-sidebar-home:hover {
-  color: var(--color-primary);
-}
-.sidebar li .btn-sidebar-home::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  border-radius: 30% 30% 0 0;
-  width: 120%;
-  height: 0%;
-  background: var(--color-primary);
-  z-index: -1;
-  transition: 0.3s;
-}
-.sidebar li .btn-sidebar-home:hover::before {
-  height: 120%;
+  background: #3b3b3b;
 }
 
 .sidebar li .btn-sidebar-home .icon {
@@ -358,7 +334,8 @@ nav {
   height: 15rem;
   background: #313131;
   overflow-x: hidden;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.2rem;
+  margin-top: 0.2rem;
 }
 .facult-list::-webkit-scrollbar {
   width: 0.5rem;
@@ -376,11 +353,23 @@ nav {
   display: flex;
   align-items: center;
   padding-left: 0.5rem;
+  padding-right: 0.5rem;
   cursor: pointer;
   overflow: hidden;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.facult-list-one:hover {
+  background: #313131;
 }
 .facult-list-one i {
   margin-right: 0.8rem;
+}
+
+.menu-close {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 /*---------------------HOME-------------------*/
@@ -437,11 +426,12 @@ nav {
   font-size: 1em;
   font-weight: 500;
   cursor: pointer;
+  background: var(--color-primary);
   color: white;
   transition: 0.5s;
   overflow: hidden;
   z-index: 2;
-  border: 0.2rem solid var(--color-primary);
+  border: 0.1rem solid var(--color-primary);
   border-radius: 0.8rem;
   letter-spacing: 0.1rem;
   outline: none;
@@ -450,23 +440,10 @@ nav {
   margin-right: 0.5rem;
 }
 .btn-create:hover {
+  background: transparent;
   color: var(--color-primary);
 }
-.btn-create::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  border-radius: 50% 50% 0 0;
-  width: 110%;
-  height: 200%;
-  background: var(--color-primary);
-  z-index: -1;
-  transition: 0.5s;
-}
-.btn-create:hover::before {
-  height: 0%;
-}
+
 .search-home,
 .search-home-profile {
   position: relative;
@@ -745,7 +722,7 @@ nav {
 }
 .files-back .menu {
   position: absolute;
-  right: 0.5rem;
+  right: 0.6rem;
   font-size: 1.2em;
   height: 100%;
   display: flex;
@@ -818,16 +795,31 @@ nav {
   color: var(--color-text);
 }
 .file-approver {
+  position: relative;
   width: 20%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   padding: 0.4rem;
   color: var(--color-text);
   gap: 0.5rem;
 }
+.approver-name {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
 .file-approver p {
+  position: absolute;
+  font-size: 0.7em;
+  text-align: left;
+  bottom: 0.5rem;
+}
+.file-approver span {
   font-size: 0.8em;
 }
 .file-approver i {
@@ -856,7 +848,7 @@ nav {
   height: 100vh;
   background: #2b2b2b60;
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -898,7 +890,6 @@ nav {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   overflow: hidden;
 }
@@ -928,17 +919,199 @@ nav {
   color: var(--color-text);
 }
 .alert-modal1 {
-  bottom: 7rem;
+  bottom: 5.5rem;
 }
 .alert-modal2 {
-  bottom: 5.5rem;
+  bottom: 4.5rem;
 }
 .btn-modal {
   position: relative;
   background: none;
-  padding: 0.2rem 0;
+  margin-top: 2.5rem;
   width: 100%;
-  height: 3rem;
+  height: 2.5rem;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+  background: var(--color-primary);
+  transition: 0.5s;
+  overflow: hidden;
+  z-index: 2;
+  border: 0.1rem solid var(--color-primary);
+  border-radius: 0.8rem;
+  letter-spacing: 0.1rem;
+  outline: none;
+}
+.btn-modal:hover {
+  color: var(--color-primary);
+  background: transparent;
+}
+
+/*----------------COMMENTS----------------------*/
+.back-modal-comment {
+  margin-top: -34%;
+  margin-left: -12.8%;
+  width: 125%;
+  height: 100vh;
+  /* background: #2b2b2b60; */
+  position: absolute;
+  z-index: 3;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-comment {
+  position: relative;
+  width: 35rem;
+  height: 35rem;
+  background: var(--color-text);
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  color: white;
+}
+.modal-comment .btn-close-modal {
+  right: 0.6rem;
+  color: white;
+}
+.what-comment {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 4rem;
+}
+.what-comment .desc-comment {
+  color: #9ca3af;
+  font-size: 0.9em;
+}
+.what-comment .name-file-comment {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+.form-comment {
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  flex-direction: row;
+}
+.form-comment input {
+  width: 90%;
+  padding-left: 0.8rem;
+  background: var(--color-text);
+  color: white;
+  border-bottom: 0.1rem solid white;
+  height: 100%;
+}
+.form-comment input:focus {
+  outline: none;
+  border-bottom: 0.15rem solid white;
+}
+.form-comment button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  color: var(--color-text);
+  width: 10%;
+  height: 100%;
+}
+.space-comment {
+  background: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.8rem;
+  margin: 0.5rem;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+.space-comment::-webkit-scrollbar {
+  width: 0.5rem;
+  background: #9ca3af;
+}
+.space-comment::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+}
+.comment-card {
+  background: #f0f0f0;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  color: var(--color-text);
+}
+.comment-card h3 {
+  font-weight: 600;
+}
+
+/*---------UPDATE AND DELETE FACULT--------*/
+.back-modal-facult {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: #2b2b2b60;
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal-facult {
+  width: 85%;
+  height: 85%;
+  background: white;
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.modal-facult .btn-close-modal {
+  right: 0.8rem;
+  top: 0.5rem;
+}
+.content-modal-facult {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.content-modal-facult .input-modal {
+  background: #ebf5fc;
+  border-bottom: 0.1rem solid var(--color-primary);
+  padding-left: 0.5rem;
+  margin-top: 2rem;
+}
+.content-modal-facult .input-modal:focus {
+  border-bottom: 0.15rem solid var(--color-primary);
+}
+.content-modal-facult .alert-modal1 {
+  z-index: 4;
+  bottom: 1rem;
+}
+.btn-modal-facult {
+  position: relative;
+  background: none;
+  margin-top: 2rem;
+  width: 100%;
+  height: 2.5rem;
   font-size: 1em;
   font-weight: 500;
   cursor: pointer;
@@ -946,26 +1119,26 @@ nav {
   transition: 0.5s;
   overflow: hidden;
   z-index: 2;
-  border: 0.2rem solid var(--color-primary);
+  border: 0.1rem solid var(--color-primary);
   border-radius: 0.8rem;
   letter-spacing: 0.1rem;
   outline: none;
-}
-.btn-modal:hover {
-  color: var(--color-primary);
-}
-.btn-modal::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  border-radius: 50% 50% 0 0;
-  width: 110%;
-  height: 200%;
   background: var(--color-primary);
-  z-index: -1;
-  transition: 0.5s;
 }
-.btn-modal:hover::before {
-  height: 0%;
+.btn-modal-facult:hover {
+  color: var(--color-primary);
+  background: transparent;
+}
+
+.btns-facult {
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+  font-size: 0.9em;
+}
+.btns-facult .btn-modal-facult {
+  margin-top: 2rem;
+}
+.alert-facult {
+  font-size: 0.9em;
 }

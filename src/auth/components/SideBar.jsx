@@ -52,6 +52,12 @@ const SideBar = () => {
             </div>
             <LinkSideBar route="/home" iconName="fa-house" title="Facultades" />
 
+            <div className="facult-list">
+              {faculties.map((item) => (
+                <CardFacultySideBar key={item._id} item={item} />
+              ))}
+            </div>
+
             <li>
               <button className="btn-sidebar-home" onClick={handleUser}>
                 <span className="icon">
@@ -60,12 +66,6 @@ const SideBar = () => {
                 <span className="text">Perfil</span>
               </button>
             </li>
-
-            <div className="facult-list">
-              {faculties.map((item) => (
-                <CardFacultySideBar key={item._id} item={item} />
-              ))}
-            </div>
           </div>
         )}
         {authenticated?.rol === ROLES.ADMIN && (
@@ -114,7 +114,7 @@ const SideBar = () => {
             />
           </div>
         )}
-        <div className="menu-list">
+        <div className="menu-close">
           <li>
             <Link onClick={handdlelogout} className="btn-sidebar-home">
               <span className="icon">

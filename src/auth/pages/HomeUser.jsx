@@ -23,6 +23,7 @@ const HomeUser = () => {
   return (
     <div className="home">
       <Profile user={authenticated} />
+
       <div className="search-home-profile">
         <i className="fa-solid fa-magnifying-glass" />
         <input
