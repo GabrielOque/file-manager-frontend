@@ -4,8 +4,9 @@ import { useContextProvider } from "../../context/ContextProvider";
 import defaultimage from "../../assets/default.png";
 
 const ModalUpdate = () => {
-  const [imageSelected, setImageSelected] = useState(null);
   const { authenticated, updateUser } = useContextProvider();
+  const [imageSelected, setImageSelected] = useState(null);
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
 
   const update = async (data) => {
     const newData = {
@@ -16,7 +17,7 @@ const ModalUpdate = () => {
       avatar: data.image[0],
     };
     await updateUser(newData);
-    // console.log(newData);
+    console.log(newData);
   };
   const {
     control,
@@ -29,57 +30,98 @@ const ModalUpdate = () => {
     setImageSelected(watch("image", "")[0]);
   }, [watch("image", "")]);
   return (
-    <div className="w-full h-screen flex justify-center items-center">
-      <div className="w-[700px] h-[800px] bg-red-500 rounded-lg shadow-lg flex flex-col justify-center items-center">
+    <div className="login-background">
+      <div className="rect1"></div>
+      <div className="rect2"></div>
+      <div className="update-primary">
+        <h1 className="tittle">Bienvenido a SwiftAdmin!</h1>
+        <div className="line"></div>
+        <p>Como es tu primera vez, debes agregar estos datos para continuar.</p>
+        <label className="label-update">Selecciona una imagen(Opcional)</label>
+
         {imageSelected ? (
-          <img
-            className="h-40 w-40"
-            src={URL.createObjectURL(imageSelected)}
-            alt="default image"
-          />
-        ) : (
-          <img className="h-40 w-40" src={defaultimage} alt="default image" />
-        )}
-        <h1 className="text-xl font-bold pb-3">
-          Es necesario agregar los datos antes de que inicies
-        </h1>
-        <form onSubmit={handleSubmit(update)}>
-          <div className="flex flex-col">
-            <input
-              className="bg-blue-100 h-10 p-3 m-3 rounded-lg text-xl"
-              type="text"
-              placeholder="Ingresa tu nombre"
-              {...register("name", { required: true })}
+          <div className="image-user">
+            <img
+              src={URL.createObjectURL(imageSelected)}
+              alt="default image"
+              draggable="false"
             />
-            {errors.name && <p className="pl-3">sE requiere un nombre</p>}
-            <input
-              className="bg-blue-100 h-10 p-3 m-3 rounded-lg text-xl"
-              type="text"
-              placeholder="Ingresa tu apellido"
-              {...register("lastName", { required: true })}
-            />
-            {errors.lastName && (
-              <p className="pl-3">SE requiere un aepellido</p>
-            )}
-            <input
-              className="bg-blue-100 h-10 p-3 m-3 rounded-lg text-xl"
-              type="password"
-              placeholder="Establece una contrasena"
-              {...register("password", { required: true })}
-            />
-            {errors.password && <p className="pl-3">Se requiere contrasena</p>}
-            <label className="text-sm">Selecciona una imagen(Opcional)</label>
             <input
               ref={control.register}
               type="file"
-              className="File-form"
+              className="image-update-input"
               {...register("image")}
             />
           </div>
-          <div className="w-full  flex justify-center mt-7">
-            <button className="py-4 bg-green-700 px-7 rounded-lg hover:bg-blue-500 font-bold">
-              Guardar
-            </button>
+        ) : (
+          <div className="image-user">
+            <i className="fa-solid fa-circle-plus" />
+            <img src={defaultimage} alt="default image" draggable="false" />
+            <input
+              ref={control.register}
+              type="file"
+              className="image-update-input"
+              {...register("image")}
+            />
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit(update)}>
+          <div className="login-inputs">
+            <div className="input-card">
+              <i id="icon-input" className="fa-solid fa-user" />
+              <input
+                className="input"
+                type="text"
+                placeholder="Nombre"
+                {...register("name", { required: true })}
+              />
+            </div>
+            <div className="input-card">
+              <i id="icon-input" className="fa-solid fa-user" />
+              <input
+                className="input"
+                type="text"
+                placeholder="Apellido"
+                {...register("lastName", { required: true })}
+              />
+            </div>
+            <div className="input-card">
+              <i id="icon-input" className="fa-solid fa-lock" />
+              <input
+                className="input"
+                type={isVisiblePassword ? "text" : "password"}
+                placeholder="Contraseña"
+                {...register("password", { required: true })}
+              />
+              {isVisiblePassword ? (
+                <i
+                  onClick={() => {
+                    setIsVisiblePassword(!isVisiblePassword);
+                  }}
+                  className="fa-regular fa-eye-slash"
+                  id="password-toggle"
+                />
+              ) : (
+                <i
+                  onClick={() => {
+                    setIsVisiblePassword(!isVisiblePassword);
+                  }}
+                  className="fa-regular fa-eye"
+                  id="password-toggle"
+                />
+              )}
+            </div>
+            {errors.name && <p className="alert1">El nombre es requerido</p>}
+            {errors.lastName && (
+              <p className="alert2">El apellido es requerido</p>
+            )}
+            {errors.password && (
+              <p className="alert3">La contraseña es requerida</p>
+            )}
+          </div>
+          <div className="button-div">
+            <button className="btn">Guardar</button>
           </div>
         </form>
       </div>

@@ -45,6 +45,7 @@ export const ContextProvider = ({ children }) => {
 
   const updateUser = async (data) => {
     const response = await updateRequest(data);
+    // console.log("hola", response.data);
     setAuthenticated(response.data);
   };
 

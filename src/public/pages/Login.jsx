@@ -90,14 +90,14 @@ const Login = () => {
                 {errors.password && (
                   <p className="alert2">La contraseña es requerida.</p>
                 )}
+                {authenticated?.message && (
+                  <p className="alert3">{authenticated.message}</p>
+                )}
               </div>
               <div className="button-div">
                 <button className="btn">Ingresar</button>
               </div>
             </form>
-            {authenticated?.message && (
-              <p className="alert3">{authenticated.message}</p>
-            )}
             <p className="about">
               &copy; 2023 Todos los derechos reservados. Todas las imágenes y
               contenidos utilizados en este sitio son propiedad de sus

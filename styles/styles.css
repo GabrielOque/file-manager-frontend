@@ -109,6 +109,7 @@ body {
   width: 100%;
 }
 .login-inputs {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
@@ -184,15 +185,19 @@ body {
 }
 
 .alert1,
-.alert2 {
+.alert2,
+.alert3 {
   position: absolute;
   font-size: 0.8em;
 }
 .alert1 {
-  bottom: 5rem;
+  bottom: -6rem;
 }
 .alert2 {
-  bottom: 3.8rem;
+  bottom: -7rem;
+}
+.alert3 {
+  bottom: -8rem;
 }
 .about {
   position: absolute;
@@ -1142,3 +1147,64 @@ nav {
 .alert-facult {
   font-size: 0.9em;
 }
+
+/*------------------------FIRTH UPDATE-------------------------------*/
+.update-primary {
+  width: 85%;
+  height: 85%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 0 0.5rem #1818183a;
+}
+.image-user {
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  border-radius: 50%;
+  margin: 0.5rem;
+}
+.image-user i {
+  position: absolute;
+  z-index: 5;
+  bottom: 0.3rem;
+  right: 0.3rem;
+  font-size: 2em;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+.image-user img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.image-update-input {
+  position: absolute;
+  z-index: 6;
+  top: 0;
+  width: 8rem;
+  height: 8rem;
+  font-size: 5em;
+  opacity: 0;
+}
+.update-primary label {
+  font-size: 0.8em;
+  margin-bottom: 0.4rem;
+  margin-bottom: -0.4rem;
+}
+/* .update-primary .btn {
+  margin-top: 3rem;
+} */
+/* .update-primary .alert1 {
+
+  bottom: -1rem;
+}
+.update-primary .alert2 {
+  bottom: -2rem;
+}
+.update-primary .alert3 {
+  bottom: -3rem;
+} */

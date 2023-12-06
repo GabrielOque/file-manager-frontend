@@ -72,7 +72,7 @@ const SideBar = () => {
           <div className="menu-list">
             <div className="what-rol">
               <span className="rol-label">Rol asignado</span>
-              <span className="rol">SuperAdmin</span>
+              <span className="rol">Admin</span>
             </div>
             <LinkSideBar route="/home" iconName="fa-house" title="Home" />
             <li>
@@ -99,7 +99,7 @@ const SideBar = () => {
           <div className="menu-list">
             <div className="what-rol">
               <span className="rol-label">Rol asignado</span>
-              <span className="rol">SuperAdmin</span>
+              <span className="rol">User</span>
             </div>
             <LinkSideBar route="/home" iconName="fa-house" title="Home" />
             <LinkSideBar
