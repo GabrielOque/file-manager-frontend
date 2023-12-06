@@ -3,6 +3,7 @@ import { useContextProvider } from "../../context/ContextProvider";
 import LinkSideBar from "./LinkSideBar";
 import { ROLES } from "../../config/config";
 import CardFacultySideBar from "./CardFacultySideBar";
+import logoImage from "../../assets/LogoSwiftAdmin.png";
 
 const SideBar = () => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const SideBar = () => {
       <div className="sidebar">
         <li className="li-logo">
           <Link to="/home" className="btn-sidebar-home-logo">
+            <img src={logoImage} alt="logo-swiftadmin" draggable="false" />
             <span className="text-logo">SwiftAdmin</span>
           </Link>
         </li>
@@ -48,7 +50,7 @@ const SideBar = () => {
           <div className="menu-list">
             <div className="what-rol">
               <span className="rol-label">Rol asignado</span>
-              <span className="rol">SuperAdmin</span>
+              <span className="rol">Super Admin</span>
             </div>
             <LinkSideBar route="/home" iconName="fa-house" title="Facultades" />
 
