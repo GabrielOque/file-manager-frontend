@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useContextProvider } from "../../context/ContextProvider";
 
 const UserCard = ({ user }) => {
-  const { getUser } = useContextProvider();
+  const { getUser, deleteUser } = useContextProvider();
   const navigate = useNavigate();
   const handleUser = async () => {
     await getUser(user._id);
@@ -22,8 +22,11 @@ const UserCard = ({ user }) => {
         <p>{user.email}</p>
         <p>{user.rol}</p>
       </div>
-      <div className="menu-user">
-        <i className="fa-solid fa-square-up-right" />
+      <div
+        className="menu-user"
+        onClick={async () => await deleteUser(user._id)}
+      >
+        <i className="fa-solid fa-trash" />
       </div>
     </div>
   );

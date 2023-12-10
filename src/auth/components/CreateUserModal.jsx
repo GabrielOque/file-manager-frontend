@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useContextProvider } from "../../context/ContextProvider";
+import Loading from "../../public/components/Loading";
 
 const CreateUserModal = ({ setIsModalOpen }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const { userRegister } = useContextProvider();
   const params = useParams();
   const handleStateModal = () => {
@@ -18,7 +21,9 @@ const CreateUserModal = ({ setIsModalOpen }) => {
       ...data,
       faculty: params.id,
     };
+    setIsLoading(!isLoading);
     await userRegister(newUser);
+    setIsLoading((prevState) => !prevState);
     handleStateModal();
   };
 
@@ -55,6 +60,11 @@ const CreateUserModal = ({ setIsModalOpen }) => {
           <button className="btn-modal" type="submit">
             Guardar
           </button>
+          {isLoading && (
+            <div className="w-full flex justify-center absolute bottom-16 z-50">
+              <Loading />
+            </div>
+          )}
         </form>
       </div>
     </div>

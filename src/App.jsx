@@ -6,6 +6,7 @@ import { useContextProvider } from "./context/ContextProvider";
 import SideBar from "./auth/components/SideBar";
 import UsersPage from "./auth/pages/UsersPage";
 import FilesPage from "./auth/pages/FilesPage";
+import ConfigPage from "./auth/pages/ConfigPage";
 
 const App = () => {
   const { authenticated } = useContextProvider();
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/users-page/:name/:id" element={<UsersPage />} />
             <Route path="/files-page/:id" element={<FilesPage />} />
+            <Route path="/config-page/:id" element={<ConfigPage />} />
           </Route>
         </Routes>
       </div>

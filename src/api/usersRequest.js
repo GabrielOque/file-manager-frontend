@@ -8,6 +8,7 @@ export const requestLogin = async (data) =>
   await axios.post(`${VITE_API_URL}/api/users/login`, data, CREDENTIALS);
 
 export const updateRequest = async (data) => {
+  console.log(data);
   const form = new FormData();
   for (let key in data) {
     form.append(key, data[key]);
@@ -68,3 +69,6 @@ export const requestUpdateUploadFile = async (data) => {
 
 export const requestDeleteFile = async (id) =>
   await axios.delete(`${VITE_API_URL}/api/files/${id}`, CREDENTIALS);
+
+export const requestDeleteUser = async (id) =>
+  await axios.delete(`${VITE_API_URL}/api/users/${id}`, CREDENTIALS);

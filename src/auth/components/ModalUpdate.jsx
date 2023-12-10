@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useContextProvider } from "../../context/ContextProvider";
 import defaultimage from "../../assets/default.png";
+import Loading from "../../public/components/Loading";
 
 const ModalUpdate = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { authenticated, updateUser } = useContextProvider();
   const [imageSelected, setImageSelected] = useState(null);
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
@@ -16,8 +18,9 @@ const ModalUpdate = () => {
       password: data.password,
       avatar: data.image[0],
     };
+    setIsLoading(!isLoading);
     await updateUser(newData);
-    console.log(newData);
+    setIsLoading((prevState) => !prevState);
   };
   const {
     control,
@@ -123,6 +126,11 @@ const ModalUpdate = () => {
           <div className="button-div">
             <button className="btn">Guardar</button>
           </div>
+          {isLoading && (
+            <div className="w-full flex justify-center pt-8">
+              <Loading />
+            </div>
+          )}
         </form>
       </div>
     </div>

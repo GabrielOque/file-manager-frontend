@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useContextProvider } from "../../context/ContextProvider";
 import loginImage from "../../assets/login-image.jpg";
+import Loading from "../components/Loading";
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const navigate = useNavigate();
   const { userLogin, authenticated, verifyToken, setAuthenticated } =
     useContextProvider();
   const login = async (data) => {
+    setIsLoading(!isLoading);
     await userLogin(data);
+    setIsLoading((prevState) => !prevState);
     navigate("/home");
   };
 
@@ -97,6 +101,11 @@ const Login = () => {
               <div className="button-div">
                 <button className="btn">Ingresar</button>
               </div>
+              {isLoading && (
+                <div className="w-full flex justify-center pt-8">
+                  <Loading />
+                </div>
+              )}
             </form>
             <p className="about">
               &copy; 2023 Todos los derechos reservados. Todas las imágenes y

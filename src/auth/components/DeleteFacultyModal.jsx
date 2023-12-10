@@ -1,13 +1,18 @@
 import { useContextProvider } from "../../context/ContextProvider";
+import { useState } from "react";
+import Loading from "../../public/components/Loading";
 
 const DeleteFacultyModal = ({ id, name, setIsModalDeleteOpen }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const { deleteFaculty } = useContextProvider();
   const handleStateModal = () => {
     setIsModalDeleteOpen((prevState) => !prevState);
   };
 
   const onsubmit = async () => {
+    setIsLoading(!isLoading);
     await deleteFaculty(id);
+    setIsLoading((prevState) => !prevState);
     handleStateModal();
   };
 
@@ -37,6 +42,11 @@ const DeleteFacultyModal = ({ id, name, setIsModalDeleteOpen }) => {
           </button>
         </div>
       </div>
+      {isLoading && (
+        <div className="w-full flex justify-center absolute bottom-[25px]  z-50">
+          <Loading />
+        </div>
+      )}
     </div>
   );
 };

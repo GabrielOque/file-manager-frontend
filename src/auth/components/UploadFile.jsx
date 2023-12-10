@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useContextProvider } from "../../context/ContextProvider";
+import Loading from "../../public/components/Loading";
 const UploadFile = ({ setShowModal, user }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const { uploadFile } = useContextProvider();
   const {
     register,
@@ -14,7 +17,9 @@ const UploadFile = ({ setShowModal, user }) => {
       description: data.description,
       author: user._id,
     };
+    setIsLoading(!isLoading);
     await uploadFile(newFile);
+    setIsLoading((prevState) => !prevState);
     setShowModal((prevState) => !prevState);
   };
   return (
@@ -59,6 +64,11 @@ const UploadFile = ({ setShowModal, user }) => {
           >
             Enviar
           </button>
+          {isLoading && (
+            <div className="w-full flex justify-center pt-8">
+              <Loading />
+            </div>
+          )}
         </form>
       </div>
     </div>

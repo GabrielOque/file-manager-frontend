@@ -17,6 +17,7 @@ import {
   requestCreateComment,
   requestUpdateUploadFile,
   requestDeleteFile,
+  requestDeleteUser,
 } from "../api/usersRequest";
 import { get, set } from "react-hook-form";
 const context = createContext();
@@ -128,6 +129,11 @@ export const ContextProvider = ({ children }) => {
     setFiles(files.filter((item) => item._id !== id));
   };
 
+  const deleteUser = async (id) => {
+    await requestDeleteUser(id);
+    setUserFaculties(userFaculties.filter((item) => item._id !== id));
+  };
+
   return (
     <context.Provider
       value={{
@@ -158,6 +164,7 @@ export const ContextProvider = ({ children }) => {
         createComment,
         uploadFile,
         deleteFile,
+        deleteUser,
       }}
     >
       {children}

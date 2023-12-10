@@ -68,6 +68,11 @@ const SideBar = () => {
                 <span className="text">Perfil</span>
               </button>
             </li>
+            <LinkSideBar
+              route={`/config-page/${authenticated._id}`}
+              iconName="fa-gear"
+              title="Configuraciones"
+            />
           </div>
         )}
         {authenticated?.rol === ROLES.ADMIN && (
@@ -86,14 +91,9 @@ const SideBar = () => {
               </button>
             </li>
             <LinkSideBar
-              route="/create-users"
-              iconName="fa-user-plus"
-              title="Crear usuarios"
-            />
-            <LinkSideBar
-              route="/home"
-              iconName="fa-layer-group"
-              title="Crear facultades"
+              route={`/config-page/${authenticated._id}`}
+              iconName="fa-gear"
+              title="Configuraciones"
             />
           </div>
         )}
@@ -105,14 +105,9 @@ const SideBar = () => {
             </div>
             <LinkSideBar route="/home" iconName="fa-house" title="Home" />
             <LinkSideBar
-              route="/create-users"
-              iconName="fa-user-plus"
-              title="Crear usuarios"
-            />
-            <LinkSideBar
-              route="/home"
-              iconName="fa-layer-group"
-              title="Crear facultades"
+              route={`/config-page/${authenticated._id}`}
+              iconName="fa-gear"
+              title="Configuraciones"
             />
           </div>
         )}
