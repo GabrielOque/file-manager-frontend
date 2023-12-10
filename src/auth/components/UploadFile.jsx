@@ -23,49 +23,47 @@ const UploadFile = ({ setShowModal, user }) => {
     setShowModal((prevState) => !prevState);
   };
   return (
-    <div className="absolute top-40 left-[35%] h-[700px] w-[600px] bg-slate-600 z-[2147483647]">
-      <button
-        onClick={() => setShowModal((prevState) => !prevState)}
-        className=" absolute right-0 text-white mr-2 mt-2"
-      >
-        X
-      </button>
-
-      <div className="flex items-center justify-center h-full w-full">
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+    <div className="back-modal">
+      <div className="modal-config-profile">
+        <button
+          className="btn-close-modal"
+          onClick={() => setShowModal((prevState) => !prevState)}
+        >
+          <i className="fa-solid fa-xmark" />
+        </button>
+        <div className="tittle-modal">
+          <h2> Subir un archivo</h2>
+        </div>
+        <div className="modal-line"></div>
+        <form onSubmit={handleSubmit(onSubmit)} className="content-modal">
           <input
             {...register("name", { required: true })}
-            className="mb-2 py-2 px-2"
+            className="input-modal"
             placeholder="Nombre del archivo"
           />
-          {errors.name && (
-            <p className="pl-3 text-red-200">Se requiere un nombre</p>
-          )}
           <input
             {...register("description", { required: true })}
-            className="mb-2 py-2 px-2"
-            placeholder="Descripcion del archivo"
+            className="input-modal"
+            placeholder="Descripción del archivo"
           />
-          {errors.description && (
-            <p className="pl-3 text-red-200">Se requiere una descripcion</p>
-          )}
           <input
             type="file"
             {...register("file", { required: true })}
-            className="mb-2 py-2 px-2"
+            className="input-modal"
             placeholder="Descripcion del archivo"
           />
-          {errors.file && (
-            <p className="pl-3 text-red-200">Se requiere un archivo</p>
+          {errors.name && <p className="alert-modal1">Se requiere un nombre</p>}
+          {errors.description && (
+            <p className="alert-modal2">Se requiere una descripcion</p>
           )}
-          <button
-            type="onsubmit"
-            className="mt-7 py-3 px-5 bg-red-700 rounded-lg text-white text-font hover:bg-blue-500 font-bold"
-          >
+          {errors.file && (
+            <p className="alert-modal3">Se requiere un archivo</p>
+          )}
+          <button type="onsubmit" className="btn-modal">
             Enviar
           </button>
-          {isLoading && (
-            <div className="w-full flex justify-center pt-8">
+          {!isLoading && (
+            <div className="w-full flex justify-center bottom-16 z-10 absolute">
               <Loading />
             </div>
           )}

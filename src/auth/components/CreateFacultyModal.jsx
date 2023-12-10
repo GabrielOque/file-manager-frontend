@@ -33,7 +33,7 @@ const CreateFacultyModal = ({ setIsModalOpen }) => {
             {...register("name", { required: true })}
           />
           {errors.email && (
-            <p className="text-red-500">Este campo es requerido</p>
+            <p className="alert-modal1">Este campo es requerido</p>
           )}
           <button className="btn-modal" type="submit">
             Guardar

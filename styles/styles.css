@@ -717,6 +717,7 @@ nav {
   font-size: 0.8em;
   margin-right: 0.6rem;
 }
+
 .search-home-profile {
   margin: 1rem;
 }
@@ -879,6 +880,16 @@ nav {
   flex-direction: column;
   padding: 1.5rem;
 }
+.modal-config-profile {
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  background: white;
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
 .btn-close-modal {
   position: absolute;
   top: 0.2rem;
@@ -911,6 +922,7 @@ nav {
 .content-modal input {
   border-bottom: 0.1rem solid var(--color-primary);
 }
+
 .content-modal select {
   background: #f0f0f0;
   border-radius: 0.5rem;
@@ -928,7 +940,8 @@ nav {
   border-bottom: 0.15rem solid var(--color-primary);
 }
 .alert-modal1,
-.alert-modal2 {
+.alert-modal2,
+.alert-modal3 {
   position: absolute;
   font-size: 0.8em;
   color: var(--color-text);
@@ -938,6 +951,9 @@ nav {
 }
 .alert-modal2 {
   bottom: 4.5rem;
+}
+.alert-modal3 {
+  bottom: 3.5rem;
 }
 .btn-modal {
   position: relative;
@@ -1176,6 +1192,19 @@ nav {
   border-radius: 50%;
   margin: 0.5rem;
 }
+.image-user-config-profile {
+  width: 16rem;
+  height: 16rem;
+  position: relative;
+  border-radius: 0.5rem;
+  margin: 1rem;
+}
+.image-user-config-profile img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
 .image-user i {
   position: absolute;
   z-index: 5;
@@ -1198,6 +1227,15 @@ nav {
   width: 8rem;
   height: 8rem;
   font-size: 5em;
+  opacity: 0;
+}
+.image-update-input-config-profile {
+  position: absolute;
+  z-index: 6;
+  top: 0;
+  width: 16rem;
+  height: 16rem;
+  font-size: 10.5em;
   opacity: 0;
 }
 .update-primary label {

@@ -60,7 +60,7 @@ const ConfigPage = () => {
               />
             </div>
           ) : authenticated.avatar && authenticated.avatar.url ? (
-            <div className="image-user">
+            <div className="image-user-config-profile">
               <img
                 src={authenticated.avatar.url}
                 alt="User avatar"
@@ -69,12 +69,12 @@ const ConfigPage = () => {
               <input
                 ref={control.register}
                 type="file"
-                className="image-update-input"
+                className="image-update-input-config-profile"
                 {...register("avatar")}
               />
             </div>
           ) : (
-            <div className="image-user">
+            <div className="image-user-config-profile">
               <i className="fa-solid fa-circle-plus" />
               <img src={defaultimage} alt="default image" draggable="false" />
               <input
@@ -100,7 +100,7 @@ const ConfigPage = () => {
         />
 
         <input
-          className="input"
+          className="input mb-4"
           type="password"
           placeholder="Contraseña"
           {...register("password")}
