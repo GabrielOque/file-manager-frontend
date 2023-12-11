@@ -3,8 +3,10 @@ import { set, useForm } from "react-hook-form";
 import defaultimage from "../../assets/default.png";
 import { useParams } from "react-router-dom";
 import { useContextProvider } from "../../context/ContextProvider";
+import Loading from "../../public/components/Loading";
 
 const ConfigPage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { updateUser, authenticated } = useContextProvider();
   const { id } = useParams();
   const [imageSelected, setImageSelected] = useState(null);
@@ -20,7 +22,9 @@ const ConfigPage = () => {
         password: data.password,
         avatar: data.avatar[0],
       };
+      setIsLoading(!isLoading);
       await updateUser(userUpdated);
+      setIsLoading((prevState) => !prevState);
     } else {
       const userUpdated = {
         _id: id,
@@ -28,7 +32,9 @@ const ConfigPage = () => {
         lastName: data.lastName,
         password: data.password,
       };
+      setIsLoading(!isLoading);
       await updateUser(userUpdated);
+      setIsLoading((prevState) => !prevState);
     }
   };
   useEffect(() => {
@@ -109,6 +115,11 @@ const ConfigPage = () => {
         <button className="btn" type="submit">
           Guardar
         </button>
+        {isLoading && (
+          <div className="absolute right-[800px] bottom-[200px]">
+            <Loading />
+          </div>
+        )}
       </form>
     </div>
   );
