@@ -62,7 +62,7 @@ const UploadFile = ({ setShowModal, user }) => {
           <button type="onsubmit" className="btn-modal">
             Enviar
           </button>
-          {!isLoading && (
+          {isLoading && (
             <div className="w-full flex justify-center bottom-16 z-10 absolute">
               <Loading />
             </div>
