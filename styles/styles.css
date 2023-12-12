@@ -499,6 +499,7 @@ nav {
   align-items: center;
   max-width: 100%;
   flex-wrap: wrap;
+  margin-bottom: 3rem;
 }
 .container-cards .facult-cards {
   position: relative;
@@ -615,6 +616,7 @@ nav {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 3rem;
 }
 .card-back {
   width: 100%;
@@ -723,9 +725,10 @@ nav {
 }
 .container-files {
   width: 80%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 3rem;
 }
 .files-back {
   width: 100%;
