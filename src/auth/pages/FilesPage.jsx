@@ -19,6 +19,7 @@ const FilesPage = () => {
   return (
     <div className="home">
       <Profile user={user} />
+
       <div className="search-home-profile">
         <i className="fa-solid fa-magnifying-glass" />
         <input
