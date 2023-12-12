@@ -7,7 +7,8 @@ import work from "../../assets/trabajador.png";
 
 const UsersPage = () => {
   const params = useParams();
-  const { userFaculties, authenticated } = useContextProvider();
+  const { userFaculties, authenticated, status, setStatus } =
+    useContextProvider();
   const [search, setSearch] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handdleSearch = (e) => {
@@ -77,6 +78,19 @@ const UsersPage = () => {
           )}
       </div>
       {isModalOpen && <CreateUserModal setIsModalOpen={setIsModalOpen} />}
+      {status && (
+        <>
+          <div className="opacity-0">
+            {setTimeout(() => {
+              setStatus(false);
+            }, 3000)}
+          </div>
+          <div className="absolute bg-red-800 text-xl rounded-lg z-50 top-[9%] right-5 flex px-5 py-2 text-white">
+            <i className="text-xl pr-3 fa-solid fa-circle-exclamation" />
+            <p>Correo ya existente.</p>
+          </div>
+        </>
+      )}
     </div>
   );
 };

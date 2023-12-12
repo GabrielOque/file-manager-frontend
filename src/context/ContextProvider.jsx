@@ -33,10 +33,21 @@ export const ContextProvider = ({ children }) => {
   const [files, setFiles] = useState([]);
   const [user, setUser] = useState();
   const [comments, setComments] = useState([]);
+  const [status, setStatus] = useState(false);
 
   const userRegister = async (dataUser) => {
-    const response = await requestRegister(dataUser);
-    setUserFaculties([...userFaculties, response.data]);
+    try {
+      const response = await requestRegister(dataUser);
+      if (response.data) {
+        if ("message" in response.data) {
+          setStatus(true);
+        } else {
+          setUserFaculties([...userFaculties, response.data]);
+        }
+      }
+    } catch (error) {
+      setUserFaculties([...userFaculties]);
+    }
   };
 
   const userLogin = async (data) => {
@@ -165,6 +176,8 @@ export const ContextProvider = ({ children }) => {
         uploadFile,
         deleteFile,
         deleteUser,
+        status,
+        setStatus,
       }}
     >
       {children}

@@ -26,7 +26,7 @@ const UserCard = ({ user }) => {
         className="menu-user"
         onClick={async () => await deleteUser(user._id)}
       >
-        <i className="fa-solid fa-trash" />
+        <i className="fa-solid fa-trash-can" />
       </div>
     </div>
   );
